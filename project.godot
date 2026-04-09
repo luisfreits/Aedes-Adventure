@@ -1,0 +1,81 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="AedesAdventure"
+run/main_scene="uid://bkvnhoku8as2b"
+config/features=PackedStringArray("4.4", "Mobile")
+config/icon="res://icon.svg"
+
+[aseprite_importers]
+
+aseprite_executable_path="C:/Users/oluis/Downloads/Aseprite1.3.17.x64.e (3)/Aseprite1.3.17.x64.e/Aseprite 1.3.17 (x64)/Aseprite-v1.3.17.exe"
+
+[display]
+
+window/size/viewport_width=300
+window/size/viewport_height=180
+window/size/mode=2
+window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
+
+[global_group]
+
+Player=""
+
+[input]
+
+left={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194319,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+right={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194321,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
+]
+}
+up={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":119,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194320,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+jump={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Terrain"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Level_End"
+
+[plugins]
+
+ai_assistant_hub/llm_api="ollama_api"
+ai_assistant_hub/preferences/thinking_target=0
+ai_assistant_hub/preferences/skip_greeting=false
+ai_assistant_hub/preferences/always_scroll_to_bottom=false
+ai_assistant_hub/preferences/audio_hints=true
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0jwco6a4xyra"]
+
+[ext_resource type="Texture2D" uid="uid://cba5wuortauly" path="res://sprites/Free Simple Pixel Tileset 16x16/Background/Background.png" id="1_dhis7"]
+
+[node name="ScrollingScene" type="Node2D"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(380, 0)
+repeat_times = 3
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D"]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 387.0
+offset_bottom = 254.0
+texture = ExtResource("1_dhis7")
+expand_mode = 1

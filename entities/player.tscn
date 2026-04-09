@@ -1,0 +1,101 @@
+[gd_scene load_steps=13 format=3 uid="uid://bo8bave6oh2d3"]
+
+[ext_resource type="Script" uid="uid://ma3mhmxjxy7p" path="res://scripts/player.gd" id="1_b0kkn"]
+[ext_resource type="Texture2D" uid="uid://d38roc072f3xl" path="res://sprites/agent_anin(1).png" id="2_b0kkn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0kkn"]
+radius = 6.0
+height = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0kkn"]
+atlas = ExtResource("2_b0kkn")
+region = Rect2(0, 149, 38, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4p34"]
+atlas = ExtResource("2_b0kkn")
+region = Rect2(38, 149, 38, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfe5m"]
+atlas = ExtResource("2_b0kkn")
+region = Rect2(0, 112, 38, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i623q"]
+atlas = ExtResource("2_b0kkn")
+region = Rect2(38, 112, 38, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qly61"]
+atlas = ExtResource("2_b0kkn")
+region = Rect2(0, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsoyl"]
+atlas = ExtResource("2_b0kkn")
+region = Rect2(38, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nm46"]
+atlas = ExtResource("2_b0kkn")
+region = Rect2(76, 0, 38, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i623q"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_b0kkn")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_e4p34")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_rfe5m")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_i623q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_qly61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsoyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nm46")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0kkn"]
+size = Vector2(12, 18)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 1
+collision_layer = 2
+script = ExtResource("1_b0kkn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CapsuleShape2D_b0kkn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i623q")
+animation = &"walk"
+autoplay = "idle"
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_b0kkn")
+debug_color = Color(0.880204, 0.0984947, 0.783484, 0.42)
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

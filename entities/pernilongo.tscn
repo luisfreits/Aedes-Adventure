@@ -1,0 +1,133 @@
+[gd_scene load_steps=16 format=3 uid="uid://cj82a2i3gibdd"]
+
+[ext_resource type="Script" uid="uid://ryvson11pftk" path="res://scripts/pernilongo.gd" id="1_i78vt"]
+[ext_resource type="Texture2D" uid="uid://cen3yoewj0wl" path="res://sprites/pernilongo.png" id="3_h8dw8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t2xtr"]
+radius = 8.0
+height = 34.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2xtr"]
+atlas = ExtResource("3_h8dw8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy44t"]
+atlas = ExtResource("3_h8dw8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbmb0"]
+atlas = ExtResource("3_h8dw8")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj8ny"]
+atlas = ExtResource("3_h8dw8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byat0"]
+atlas = ExtResource("3_h8dw8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86ome"]
+atlas = ExtResource("3_h8dw8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3tnx"]
+atlas = ExtResource("3_h8dw8")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojpjk"]
+atlas = ExtResource("3_h8dw8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rt6l"]
+atlas = ExtResource("3_h8dw8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oocq3"]
+atlas = ExtResource("3_h8dw8")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4gm8i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2xtr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy44t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbmb0")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cj8ny")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_byat0")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_86ome")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_q3tnx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojpjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rt6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oocq3")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cj8ny"]
+size = Vector2(47, 20)
+
+[node name="Pernilongo" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_i78vt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 7)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_t2xtr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4gm8i")
+animation = &"dead"
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-4.5, 5)
+shape = SubResource("RectangleShape2D_cj8ny")
+debug_color = Color(0.892047, 0.252845, 0.516127, 0.42)
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+position = Vector2(0, 11)
+rotation = 3.1398
+target_position = Vector2(40, 0)
+
+[node name="GroundDetector" type="RayCast2D" parent="."]
+position = Vector2(-29, 0)
+target_position = Vector2(0, 21)
