@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Pernilongo
+
 enum PernilongoState {
 	walk,
 	hurt

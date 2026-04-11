@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq2qjtcqalnv8"]
+
+[ext_resource type="Script" uid="uid://box42cgarvpsj" path="res://scripts/dialog_box.gd" id="1_0vsup"]
+[ext_resource type="Texture2D" uid="uid://faatc2pbhtuo" path="res://sprites/Chocolate - Retro Textbox 01/Retro_Textbox_01-A_Transparent.png" id="2_p7iyb"]
+[ext_resource type="Texture2D" uid="uid://cxe5rh7u6kwel" path="res://sprites/Chocolate - Retro Textbox 01/ctc_retro_textbox_1.png" id="3_xc2fq"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_x2mvv"]
+frames = 2
+frame_0/texture = ExtResource("3_xc2fq")
+frame_1/texture = ExtResource("3_xc2fq")
+frame_1/duration = 1.0
+
+[node name="dialog_box" type="MarginContainer"]
+process_mode = 3
+anchors_preset = -1
+anchor_left = 0.433
+anchor_top = 0.389
+anchor_right = 0.567
+anchor_bottom = 0.611
+offset_left = 0.0999908
+offset_top = -0.0200043
+offset_right = -0.100006
+offset_bottom = 0.0199966
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0vsup")
+
+[node name="bg_dialog_box" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_p7iyb")
+region_rect = Rect2(119.108, 51.3979, 990.338, 184.349)
+
+[node name="text_container" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="text_label" type="Label" parent="text_container"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="indicator" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = SubResource("AnimatedTexture_x2mvv")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://buokykblxrona"]
+
+[ext_resource type="Script" uid="uid://cwgghhx6f5q3q" path="res://scripts/dialog_manager.gd" id="1_lk4db"]
+[ext_resource type="PackedScene" uid="uid://cq2qjtcqalnv8" path="res://scene/dialog_box.tscn" id="2_hacyx"]
+
+[node name="dialog_manager" type="Node"]
+script = ExtResource("1_lk4db")
+dialog_scene = ExtResource("2_hacyx")

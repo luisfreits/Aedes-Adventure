@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 enum PlayerState {
 	idle,
 	walk,
@@ -9,12 +11,11 @@ enum PlayerState {
 }
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-
-
-
+@onready var reload_timer: Timer = $ReloadTimer
 @export var max_speed = 180.0
 @export var acceleration = 100
 @export var deceleration = 100
+
 const JUMP_VELOCITY = -300.0
 
 var status: PlayerState
@@ -82,6 +83,7 @@ func go_to_fall_state():
 func go_to_dead_state():
 	status = PlayerState.dead
 	velocity = Vector2.ZERO
+	reload_timer.start()
 
 func fall_state(delta):
 	move(delta)
@@ -143,7 +145,7 @@ func jump_state(delta):
 func can_jump() -> bool:
 	return jump_count < max_jump_count
 
-func temp(delta: float) -> void:
+func temp(_delta: float) -> void:
 	#add the gravity
 
 		
@@ -152,11 +154,30 @@ func temp(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 
+
 func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Enemies"):
+		hit_enemy(area)
+	elif area.is_in_group("LethalArea"):
+		hit_lethal_area()
+		
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("LethalArea"):
+		go_to_dead_state()
+
+
+func hit_enemy(area: Area2D):
 	if velocity.y > 0:
+		# inimigo morre
 		area.get_parent().take_damage()
 		go_to_jump_state()
 	else:
-		#player morre
+		# player morre
 		go_to_dead_state()
-	return
+	
+func hit_lethal_area():
+	go_to_dead_state()
+
+func _on_reload_timer_timeout() -> void:
+	#quando acaba o tempo do reload
+	get_tree().reload_current_scene()

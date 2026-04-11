@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bkvnhoku8as2b"]
+[gd_scene load_steps=15 format=4 uid="uid://bkvnhoku8as2b"]
 
 [ext_resource type="PackedScene" uid="uid://bo8bave6oh2d3" path="res://entities/player.tscn" id="1_5kiuu"]
 [ext_resource type="Texture2D" uid="uid://b3udxdf34t3r5" path="res://sprites/Assets_area_1/Subway_tiles.png" id="2_dbls1"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://b0jwco6a4xyra" path="res://scene/scrolling_scene.tscn" id="5_xlg7c"]
 [ext_resource type="PackedScene" uid="uid://1i52xwtxj5y6" path="res://entities/camera_2d.tscn" id="6_xlg7c"]
 [ext_resource type="PackedScene" uid="uid://cyjges3djtow3" path="res://entities/level_end.tscn" id="7_lnyf2"]
+[ext_resource type="Texture2D" uid="uid://bnsia3q41th0p" path="res://sprites/sign.png" id="8_54152"]
+[ext_resource type="Script" uid="uid://b0pdxnt5gitam" path="res://scripts/hit_pop.gd" id="9_xsrxy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uietq"]
 texture = ExtResource("2_dbls1")
@@ -454,16 +456,23 @@ sources/1 = SubResource("TileSetAtlasSource_uietq")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnyf2"]
 size = Vector2(20, 148)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qns84"]
+size = Vector2(20, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvp2h"]
+
 [node name="Fase_1-1" type="Node2D"]
 metadata/_edit_vertical_guides_ = [1015.0, 695.0, 711.0]
 
 [node name="Player" parent="." instance=ExtResource("1_5kiuu")]
-position = Vector2(10, 138)
+position = Vector2(37, 140)
+collision_mask = 3
 acceleration = 400
 deceleration = 400
 
 [node name="Pernilongo" parent="." instance=ExtResource("4_xwcet")]
 position = Vector2(129, 138)
+collision_mask = 5
 
 [node name="ScrollingScene" parent="." instance=ExtResource("5_xlg7c")]
 z_index = -50
@@ -489,5 +498,32 @@ next_level = "Fase_1-2"
 [node name="CollisionShape2D" parent="LevelEnd" index="0"]
 position = Vector2(2, -64)
 shape = SubResource("RectangleShape2D_lnyf2")
+
+[node name="pop_up" type="StaticBody2D" parent="."]
+position = Vector2(279, 86)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pop_up"]
+light_mask = 32
+visibility_layer = 32
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_qns84")
+
+[node name="Sprite2D" type="Sprite2D" parent="pop_up"]
+position = Vector2(-2, -7)
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("8_54152")
+
+[node name="hit_pop" type="Area2D" parent="pop_up"]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("9_xsrxy")
+dialog_texts = Array[String](["isso", "e um teste", "uga buga buga"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pop_up/hit_pop"]
+shape = SubResource("RectangleShape2D_rvp2h")
+
+[connection signal="body_entered" from="pop_up/hit_pop" to="pop_up/hit_pop" method="_on_body_entered"]
 
 [editable path="LevelEnd"]
