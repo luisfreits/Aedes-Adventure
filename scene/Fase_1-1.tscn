@@ -457,16 +457,18 @@ sources/1 = SubResource("TileSetAtlasSource_uietq")
 size = Vector2(20, 148)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qns84"]
-size = Vector2(20, 3)
+size = Vector2(20, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvp2h"]
+size = Vector2(20, 8)
 
 [node name="Fase_1-1" type="Node2D"]
 metadata/_edit_vertical_guides_ = [1015.0, 695.0, 711.0]
 
 [node name="Player" parent="." instance=ExtResource("1_5kiuu")]
 position = Vector2(37, 140)
-collision_mask = 3
+collision_layer = 2
+collision_mask = 17
 acceleration = 400
 deceleration = 400
 
@@ -501,27 +503,28 @@ shape = SubResource("RectangleShape2D_lnyf2")
 
 [node name="pop_up" type="StaticBody2D" parent="."]
 position = Vector2(279, 86)
-collision_layer = 2
+collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pop_up"]
 light_mask = 32
 visibility_layer = 32
-position = Vector2(0, 0.5)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_qns84")
 
 [node name="Sprite2D" type="Sprite2D" parent="pop_up"]
-position = Vector2(-2, -7)
+position = Vector2(-3, -7)
 scale = Vector2(0.5625, 0.5625)
 texture = ExtResource("8_54152")
 
 [node name="hit_pop" type="Area2D" parent="pop_up"]
-collision_layer = 2
-collision_mask = 16
+collision_layer = 16
+collision_mask = 2
 script = ExtResource("9_xsrxy")
-dialog_texts = Array[String](["isso", "e um teste", "uga buga buga"])
+dialog_texts = Array[String](["isso", "e um teste", "uga buga buga", "deew"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pop_up/hit_pop"]
+position = Vector2(-2, 6)
 shape = SubResource("RectangleShape2D_rvp2h")
 
 [connection signal="body_entered" from="pop_up/hit_pop" to="pop_up/hit_pop" method="_on_body_entered"]

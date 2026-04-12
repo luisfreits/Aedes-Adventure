@@ -7,7 +7,7 @@ var current_index : int = 0
 var typing_speed : float = 0.05
 var is_typing : bool = false
 
-@onready var text_label: Label = $text_containerr/text_label
+@onready var text_label: Label = $text_container/text_label
 @onready var indicator: TextureRect = $indicator
 @onready var tween : Tween = get_tree().create_tween() 
 

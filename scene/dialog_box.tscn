@@ -1,34 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq2qjtcqalnv8"]
+[gd_scene load_steps=7 format=3 uid="uid://cq2qjtcqalnv8"]
 
 [ext_resource type="Script" uid="uid://box42cgarvpsj" path="res://scripts/dialog_box.gd" id="1_0vsup"]
 [ext_resource type="Texture2D" uid="uid://faatc2pbhtuo" path="res://sprites/Chocolate - Retro Textbox 01/Retro_Textbox_01-A_Transparent.png" id="2_p7iyb"]
-[ext_resource type="Texture2D" uid="uid://cxe5rh7u6kwel" path="res://sprites/Chocolate - Retro Textbox 01/ctc_retro_textbox_1.png" id="3_xc2fq"]
+[ext_resource type="Texture2D" uid="uid://h4d735ae76lr" path="res://sprites/Sprites/UI_Flat_IconPoint01a.png" id="3_x2mvv"]
+[ext_resource type="Texture2D" uid="uid://iu25oakhdpjx" path="res://sprites/Sprites/UI_Flat_IconPoint01b.png" id="4_8vvbf"]
+[ext_resource type="Texture2D" uid="uid://c0meic4dvp0yw" path="res://sprites/Sprites/UI_Flat_IconPoint01c.png" id="5_a6umq"]
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_x2mvv"]
-frames = 2
-frame_0/texture = ExtResource("3_xc2fq")
-frame_1/texture = ExtResource("3_xc2fq")
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_d8qqp"]
+frames = 3
+frame_0/texture = ExtResource("3_x2mvv")
+frame_1/texture = ExtResource("4_8vvbf")
 frame_1/duration = 1.0
+frame_2/texture = ExtResource("5_a6umq")
+frame_2/duration = 1.0
 
 [node name="dialog_box" type="MarginContainer"]
 process_mode = 3
 anchors_preset = -1
-anchor_left = 0.433
-anchor_top = 0.389
-anchor_right = 0.567
-anchor_bottom = 0.611
-offset_left = 0.0999908
-offset_top = -0.0200043
-offset_right = -0.100006
-offset_bottom = 0.0199966
+anchor_left = 0.24
+anchor_top = 0.306
+anchor_right = 0.76
+anchor_bottom = 0.694
+offset_left = 2.0
+offset_top = -0.079998
+offset_right = 2.0
+offset_bottom = 0.0800018
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.192913, 0.275689)
 script = ExtResource("1_0vsup")
 
 [node name="bg_dialog_box" type="NinePatchRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_p7iyb")
-region_rect = Rect2(119.108, 51.3979, 990.338, 184.349)
+region_rect = Rect2(97.8533, 28.3058, 1029.41, 225.967)
 
 [node name="text_container" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -47,4 +52,4 @@ autowrap_mode = 2
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-texture = SubResource("AnimatedTexture_x2mvv")
+texture = SubResource("AnimatedTexture_d8qqp")

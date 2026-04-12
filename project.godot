@@ -21,7 +21,7 @@ aseprite_executable_path="C:/Users/oluis/Downloads/Aseprite1.3.17.x64.e (3)/Asep
 
 [autoload]
 
-DialogManager="*res://scripts/dialog_manager.gd"
+DialogManager="*res://scene/dialog_manager.tscn"
 
 [display]
 
