@@ -67,7 +67,7 @@ animations = [{
 radius = 8.49575
 height = 22.0523
 
-[node name="Pernilongo" type="CharacterBody2D"]
+[node name="Pernilongo" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 4
 script = ExtResource("1_i78vt")
 
@@ -80,7 +80,9 @@ shape = SubResource("RectangleShape2D_t2xtr")
 sprite_frames = SubResource("SpriteFrames_4gm8i")
 animation = &"walk"
 
-[node name="Hitbox" type="Area2D" parent="." groups=["Enemies"]]
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-2, 0)

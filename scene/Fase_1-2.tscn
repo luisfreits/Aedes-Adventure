@@ -453,7 +453,7 @@ sources/1 = SubResource("TileSetAtlasSource_5qen1")
 [node name="Fase_1-2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5qen1")]
-position = Vector2(9, 138)
+position = Vector2(9, 129)
 
 [node name="Thief" parent="." instance=ExtResource("2_ss4tf")]
 position = Vector2(311, 68)
