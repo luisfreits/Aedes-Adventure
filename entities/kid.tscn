@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://t2asgqm81lmj"]
+
+[ext_resource type="Texture2D" uid="uid://cvcm861fnj85c" path="res://sprites/criança_favela.png" id="1_8bt55"]
+[ext_resource type="Script" uid="uid://b0ihne2ox4270" path="res://kid_pop.gd" id="1_kfto2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bt55"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_la816"]
+
+[node name="kid" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.250008, 0.249992)
+scale = Vector2(0.0609375, 0.0609375)
+texture = ExtResource("1_8bt55")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8bt55")
+
+[node name="kid_pop" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_kfto2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kid_pop"]
+shape = SubResource("RectangleShape2D_la816")

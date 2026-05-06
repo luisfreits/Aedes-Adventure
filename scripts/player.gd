@@ -55,6 +55,10 @@ func _physics_process(delta: float) -> void:
 
 	if position.y > 600 and status != PlayerState.dead:
 		go_to_dead_state()
+		_check_damage_tile()
+		
+	if position.y > 600 and status != PlayerState.dead:
+		go_to_dead_state()
 
 func take_hit() -> void:
 	if status == PlayerState.dead or is_invincible:
@@ -213,6 +217,16 @@ func _on_attack_box_area_entered(area: Area2D) -> void:
 		else:
 			enemy.queue_free()
 
+
+
 func _on_reload_timer_timeout() -> void:
 	hud.update_hearts(0)
 	get_tree().reload_current_scene()
+
+func _check_damage_tile() -> void:
+	var tilemap = get_node_or_null("../damage_tile")
+	if tilemap == null:
+		print("damage_tile não encontrado! Pai do Player: ", get_parent().name)
+		return
+	if tilemap.get_damage_at(global_position):
+		take_hit()
