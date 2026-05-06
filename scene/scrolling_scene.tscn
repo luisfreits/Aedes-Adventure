@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0jwco6a4xyra"]
+[gd_scene load_steps=3 format=3 uid="uid://b0jwco6a4xyra"]
 
-[ext_resource type="Texture2D" uid="uid://cmuvd6jukop2p" path="res://sprites/cenario cidade.png" id="1_dhis7"]
+[ext_resource type="Texture2D" uid="uid://f108wwqfshtn" path="res://sprites/cenario cidade(1).png" id="1_0d05d"]
+[ext_resource type="Texture2D" uid="uid://csr2m2l8x06qh" path="res://sprites/cenario cidade 2.png" id="2_oa6pd"]
 
 [node name="ScrollingScene" type="Node2D"]
 
@@ -10,9 +11,23 @@ repeat_size = Vector2(380, 0)
 repeat_times = 3
 
 [node name="TextureRect" type="TextureRect" parent="Parallax2D"]
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 387.0
-offset_bottom = 254.0
-texture = ExtResource("1_dhis7")
+z_index = 1
+offset_left = -6.0
+offset_top = -61.0
+offset_right = 386.0
+offset_bottom = 198.0
+texture = ExtResource("1_0d05d")
+expand_mode = 1
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.6, 0.6)
+repeat_size = Vector2(380, 0)
+repeat_times = 3
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D2"]
+offset_left = -145.0
+offset_top = -16.0
+offset_right = 247.0
+offset_bottom = 243.0
+texture = ExtResource("2_oa6pd")
 expand_mode = 1

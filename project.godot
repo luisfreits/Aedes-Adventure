@@ -22,10 +22,11 @@ aseprite_executable_path="C:/Users/oluis/Downloads/Aseprite1.3.17.x64.e (3)/Asep
 [autoload]
 
 DialogManager="*res://scene/dialog_manager.tscn"
+Hud="*res://scene/hud.tscn"
 
 [display]
 
-window/size/viewport_width=300
+window/size/viewport_width=350
 window/size/viewport_height=180
 window/size/mode=2
 window/stretch/mode="canvas_items"

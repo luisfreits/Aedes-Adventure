@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-enum PlayerState { idle, walk, jump, fall, dead, attack }
+enum PlayerState { idle, walk, jump, fall, dead, attack, hurt }
 
 const JUMP_VELOCITY = -300.0
 
@@ -11,11 +11,14 @@ const JUMP_VELOCITY = -300.0
 @onready var hitbox: Area2D = $Hitbox
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var attack_collision: CollisionShape2D = $attack_box/attack_collision
+# ← sem hearts_display aqui
 
 @export var max_speed: float = 180.0
 @export var acceleration: float = 500.0
 @export var deceleration: float = 400.0
+@export var max_hits: int = 3
 
+var hud: CanvasLayer
 var facing_dir := 1
 var attack_box_base_x: float
 var status: PlayerState = PlayerState.idle
@@ -23,8 +26,13 @@ var jump_count := 0
 var max_jump_count := 2
 var direction := 0.0
 var attack_in_progress := false
+var hit_count := 0
+var is_invincible := false
+const INVINCIBILITY_TIME := 1.0
 
 func _ready() -> void:
+	
+	hud = get_node("/root/Hud")
 	attack_box_base_x = abs(attack_box.position.x)
 	attack_collision.disabled = true
 	update_attack_box_position()
@@ -48,13 +56,43 @@ func _physics_process(delta: float) -> void:
 	if position.y > 600 and status != PlayerState.dead:
 		go_to_dead_state()
 
+func take_hit() -> void:
+	if status == PlayerState.dead or is_invincible:
+		return
+	hit_count += 1
+	hud.update_hearts(hit_count)
+	if hit_count >= max_hits:
+		go_to_dead_state()
+	else:
+		go_to_hurt_state()
+
+func go_to_hurt_state() -> void:
+	is_invincible = true
+	_blink_sprite()
+	await get_tree().create_timer(INVINCIBILITY_TIME).timeout
+	is_invincible = false
+	if status != PlayerState.dead:
+		if is_on_floor():
+			if Input.get_axis("left", "right") != 0:
+				go_to_walk_state()
+			else:
+				go_to_idle_state()
+		else:
+			go_to_fall_state()
+
+func _blink_sprite() -> void:
+	for i in range(5):
+		sprite.modulate.a = 0.3
+		await get_tree().create_timer(INVINCIBILITY_TIME / 10.0).timeout
+		sprite.modulate.a = 1.0
+		await get_tree().create_timer(INVINCIBILITY_TIME / 10.0).timeout
+
 func move(delta: float) -> void:
 	direction = Input.get_axis("left", "right")
 	var speed_multiplier = 0.5 if status == PlayerState.attack else 1.0
 	var target_velocity = direction * max_speed * speed_multiplier
 	var current_step = acceleration if direction != 0 else deceleration
 	velocity.x = move_toward(velocity.x, target_velocity, current_step * delta)
-
 	if direction != 0:
 		facing_dir = 1 if direction > 0 else -1
 		sprite.flip_h = (facing_dir == -1)
@@ -106,6 +144,9 @@ func go_to_dead_state() -> void:
 	velocity = Vector2.ZERO
 	attack_collision.disabled = true
 	attack_in_progress = false
+	is_invincible = false
+	sprite.modulate.a = 1.0
+	hud.show_dead()
 	animation_player.play("dead")
 	reload_timer.start()
 
@@ -150,10 +191,8 @@ func _get_enemy_from_collider(collider: Node) -> Node:
 	if collider.get_parent() and collider.get_parent().is_in_group("Enemies"): return collider.get_parent()
 	return null
 
-
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	var enemy = _get_enemy_from_collider(area)
-	
 	if enemy != null:
 		if velocity.y > 0:
 			if enemy.has_method("take_damage"):
@@ -162,19 +201,18 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 				enemy.queue_free()
 			go_to_jump_state()
 		else:
-			go_to_dead_state()
-	# O elif deve vir ANTES do else, ou ser um IF separado. 
-	# Aqui, vamos usar IF para garantir que detecte a área letal:
+			take_hit()
 	if area.is_in_group("LethalArea"):
 		go_to_dead_state()
 
 func _on_attack_box_area_entered(area: Area2D) -> void:
 	var enemy = _get_enemy_from_collider(area)
-	if enemy != null: # Adicionei o TAB aqui que faltava na sua imagem
+	if enemy != null:
 		if enemy.has_method("take_damage"):
 			enemy.take_damage()
 		else:
 			enemy.queue_free()
 
 func _on_reload_timer_timeout() -> void:
+	hud.update_hearts(0)
 	get_tree().reload_current_scene()
