@@ -6,28 +6,31 @@
 [node name="ScrollingScene" type="Node2D"]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
+visible = false
 scroll_scale = Vector2(0.3, 0.3)
-repeat_size = Vector2(550, 0)
+scroll_offset = Vector2(-513, -3)
+repeat_size = Vector2(810, 0)
 repeat_times = 3
 
 [node name="TextureRect" type="TextureRect" parent="Parallax2D"]
 z_index = 1
-offset_left = -1.0
-offset_top = -210.0
-offset_right = 558.0
-offset_bottom = 453.0
+offset_left = 30.0
+offset_top = -288.0
+offset_right = 843.0
+offset_bottom = 673.0
 texture = ExtResource("1_0d05d")
 expand_mode = 1
 
 [node name="Parallax2D2" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.6, 0.6)
-repeat_size = Vector2(380, 0)
+scroll_offset = Vector2(-6, 13)
+repeat_size = Vector2(791, 0)
 repeat_times = 3
 
 [node name="TextureRect" type="TextureRect" parent="Parallax2D2"]
-offset_left = -135.0
-offset_top = 40.0
-offset_right = 257.0
-offset_bottom = 299.0
+offset_left = -132.0
+offset_top = -213.0
+offset_right = 659.0
+offset_bottom = 293.0
 texture = ExtResource("2_oa6pd")
 expand_mode = 1

@@ -12,6 +12,8 @@ var is_typing : bool = false
 @onready var tween : Tween = get_tree().create_tween() 
 
 func _ready() -> void:
+	# Tamanho fixo direto
+	text_label.add_theme_font_size_override("font_size", 7)
 	pivot_offset = size / 2
 	self.scale = Vector2.ZERO
 	indicator.visible = false

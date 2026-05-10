@@ -3,7 +3,7 @@ class_name Player
 
 enum PlayerState { idle, walk, jump, fall, dead, attack, hurt }
 
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = -250.0
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var reload_timer: Timer = $ReloadTimer

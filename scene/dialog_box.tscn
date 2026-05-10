@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cq2qjtcqalnv8"]
+[gd_scene load_steps=8 format=3 uid="uid://cq2qjtcqalnv8"]
 
 [ext_resource type="Script" uid="uid://box42cgarvpsj" path="res://scripts/dialog_box.gd" id="1_0vsup"]
 [ext_resource type="Texture2D" uid="uid://faatc2pbhtuo" path="res://sprites/Chocolate - Retro Textbox 01/Retro_Textbox_01-A_Transparent.png" id="2_p7iyb"]
+[ext_resource type="FontFile" uid="uid://wb6btfnn8cdp" path="res://sprites/PressStart2P-Regular.ttf" id="3_8vvbf"]
 [ext_resource type="Texture2D" uid="uid://h4d735ae76lr" path="res://sprites/Sprites/UI_Flat_IconPoint01a.png" id="3_x2mvv"]
 [ext_resource type="Texture2D" uid="uid://iu25oakhdpjx" path="res://sprites/Sprites/UI_Flat_IconPoint01b.png" id="4_8vvbf"]
 [ext_resource type="Texture2D" uid="uid://c0meic4dvp0yw" path="res://sprites/Sprites/UI_Flat_IconPoint01c.png" id="5_a6umq"]
@@ -45,6 +46,7 @@ theme_override_constants/margin_bottom = 3
 [node name="text_label" type="Label" parent="text_container"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8vvbf")
 vertical_alignment = 1
 autowrap_mode = 2
 

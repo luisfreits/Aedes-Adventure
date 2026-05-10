@@ -4,9 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://d38roc072f3xl" path="res://sprites/agent_anin(1).png" id="2_b0kkn"]
 [ext_resource type="Texture2D" uid="uid://bqfkh4jn7vg7a" path="res://sprites/agent_anin.png" id="2_e4p34"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0kkn"]
-radius = 6.0
-height = 20.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfe5m"]
+size = Vector2(8.3981, 14.161)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0kkn"]
 atlas = ExtResource("2_b0kkn")
@@ -325,9 +324,9 @@ hframes = 4
 vframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(0.5, 3.50815)
 scale = Vector2(1.30982, 1.20163)
-shape = SubResource("CapsuleShape2D_b0kkn")
+shape = SubResource("RectangleShape2D_rfe5m")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 visible = false
