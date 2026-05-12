@@ -1,3 +1,4 @@
+# damage_tile script limpo
 extends TileMapLayer
 
 func get_damage_at(pos: Vector2) -> bool:

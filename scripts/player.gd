@@ -55,10 +55,10 @@ func _physics_process(delta: float) -> void:
 
 	if position.y > 600 and status != PlayerState.dead:
 		go_to_dead_state()
-		_check_damage_tile()
 		
-	if position.y > 600 and status != PlayerState.dead:
-		go_to_dead_state()
+		
+	if status != PlayerState.dead:
+		_check_damage_tile()
 
 func take_hit() -> void:
 	if status == PlayerState.dead or is_invincible:
@@ -226,7 +226,7 @@ func _on_reload_timer_timeout() -> void:
 func _check_damage_tile() -> void:
 	var tilemap = get_node_or_null("../damage_tile")
 	if tilemap == null:
-		print("damage_tile não encontrado! Pai do Player: ", get_parent().name)
 		return
-	if tilemap.get_damage_at(global_position):
+	var feet_pos = global_position + Vector2(0, 8)
+	if tilemap.get_damage_at(feet_pos):
 		take_hit()

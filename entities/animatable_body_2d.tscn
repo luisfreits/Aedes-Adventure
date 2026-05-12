@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0407murfl0q2"]
+
+[ext_resource type="TileSet" uid="uid://b6mktjpxkphe8" path="res://scripts/animatable_body_2d.tres" id="1_swhcm"]
+[ext_resource type="Script" uid="uid://cyvbkglc8bv3y" path="res://scripts/unstable_tiles.gd" id="2_cgmkn"]
+
+[node name="unstable_tiles" type="TileMapLayer"]
+tile_set = ExtResource("1_swhcm")
+script = ExtResource("2_cgmkn")

@@ -1,0 +1,15 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://crdetqvmrqlfs"]
+
+[ext_resource type="Texture2D" uid="uid://csnalrst8t4b6" path="res://sprites/damage_tile.png" id="2_1vspv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ne6v3"]
+texture = ExtResource("2_1vspv")
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[resource]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+custom_data_layer_0/name = "damage"
+custom_data_layer_0/type = 1
+sources/4 = SubResource("TileSetAtlasSource_ne6v3")

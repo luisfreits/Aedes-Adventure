@@ -72,6 +72,6 @@ animations = [{
 script = ExtResource("1_o8u2p")
 
 [node name="HeartDisplay" type="AnimatedSprite2D" parent="."]
-position = Vector2(50, 20)
+position = Vector2(20, 10)
 sprite_frames = SubResource("SpriteFrames_r6mtg")
 animation = &"one_heart"

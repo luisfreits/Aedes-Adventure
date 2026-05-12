@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bkvnhoku8as2b"]
+[gd_scene load_steps=21 format=4 uid="uid://bkvnhoku8as2b"]
 
 [ext_resource type="PackedScene" uid="uid://bo8bave6oh2d3" path="res://entities/player.tscn" id="1_mv7q4"]
 [ext_resource type="PackedScene" uid="uid://cj82a2i3gibdd" path="res://entities/pernilongo.tscn" id="2_xdrxq"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://x4n31ot4pshc" path="res://entities/damage_tile.tscn" id="9_84k3l"]
 [ext_resource type="PackedScene" uid="uid://ctkpjywqnx8cj" path="res://entities/hit_pop.tscn" id="10_b6606"]
 [ext_resource type="Texture2D" uid="uid://cvcm861fnj85c" path="res://sprites/criança_favela.png" id="11_bbhtg"]
+[ext_resource type="PackedScene" uid="uid://c0407murfl0q2" path="res://entities/animatable_body_2d.tscn" id="12_xdrxq"]
+[ext_resource type="TileSet" uid="uid://b6mktjpxkphe8" path="res://scripts/animatable_body_2d.tres" id="13_q8688"]
+[ext_resource type="Script" uid="uid://cyvbkglc8bv3y" path="res://scripts/unstable_tiles.gd" id="14_307il"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvp2h"]
 size = Vector2(20, 260)
@@ -533,7 +536,7 @@ scale = Vector2(1.081, 3.36545)
 dialog_texts = Array[String](["Você pode andar pra direita e pra esquerda", "Basta usar as teclas A e D ou as setas do seu teclado!", "mas acho que você já descobriu isso sozinho..."])
 
 [node name="crianca" type="StaticBody2D" parent="."]
-position = Vector2(313, 129)
+position = Vector2(318, 145)
 collision_layer = 32
 collision_mask = 0
 
@@ -558,10 +561,8 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
-position = Vector2(879, 231)
+position = Vector2(425, 392)
 shape = SubResource("RectangleShape2D_xsrxy")
-
-[node name="terrain" parent="KillZone/CollisionShape2D" instance=ExtResource("9_84k3l")]
 
 [node name="placa-pulo" type="StaticBody2D" parent="."]
 position = Vector2(313, 129)
@@ -608,5 +609,20 @@ texture = ExtResource("8_yk2fw")
 position = Vector2(935, -24)
 scale = Vector2(1.081, 3.36545)
 dialog_texts = Array[String](["Muito alto!", "Pule duas vezes pra alcançar o outro lado!"])
+
+[node name="damage_tile" parent="." instance=ExtResource("9_84k3l")]
+light_mask = 0
+position = Vector2(948, -20)
+tile_map_data = PackedByteArray("AACAABAAAQADAAEAAACCABAAAQADAAEAAACEABAAAQADAAEAAACGABAAAQADAAEAAACIABAAAQADAAEAAAAnABIAAQAAAAEAAAAoABIAAQABAAEAAAApABIAAQACAAEAAAAqABIAAQADAAEAAAAlABIAAQAAAAEAAAAtABIAAQABAAEAAAAvABIAAQABAAEAAAASAAgAAQAAAAEAAAAUAAgAAQAAAAEAAAAWAAgAAQAAAAEAAAAGAAkABAAAAAAAAAAHAAkABAAAAAAAAAAJAAkABAAAAAAAAAAIAAkABAAAAAAAAAA=")
+
+[node name="AnimatableBody2D" parent="." instance=ExtResource("12_xdrxq")]
+light_mask = 32
+visibility_layer = 33
+position = Vector2(375, 92)
+
+[node name="unstable_tiles" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAARAAcAAAAAAAAAAAASAAcAAAABAAAAAAATAAcAAAACAAAAAAAUAAcAAAADAAAAAAAVAAcAAAAEAAAAAAAWAAcAAAAFAAAAAAAUAAUAAAAAAAAAAAAVAAUAAAABAAAAAAAWAAUAAAACAAAAAAAXAAUAAAADAAAAAAAYAAUAAAAEAAAAAAAZAAUAAAAFAAAAAAAOAAMAAAABAAAAAAAPAAMAAAACAAAAAAAQAAMAAAADAAAAAAAVAAMAAAAAAAAAAAAWAAMAAAABAAAAAAAXAAMAAAACAAAAAAAIAAgAAAABAAAAAAAJAAgAAAACAAAAAAAKAAgAAAADAAAAAAA=")
+tile_set = ExtResource("13_q8688")
+script = ExtResource("14_307il")
 
 [editable path="LevelEnd"]
