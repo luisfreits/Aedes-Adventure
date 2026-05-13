@@ -1,0 +1,149 @@
+[gd_scene load_steps=13 format=3 uid="uid://rxyvtbbfs1m5"]
+
+[ext_resource type="Script" uid="uid://c7ik6d44ipsp8" path="res://scripts/title_screen.gd" id="1_2fir4"]
+[ext_resource type="Texture2D" uid="uid://bqhjm0kjcxdgt" path="res://sprites/77df018820e8727ae0ac178ab9c8d840c8a3e317.png" id="2_wxbcn"]
+[ext_resource type="Texture2D" uid="uid://dmvl7t030ikq2" path="res://sprites/WhatsApp_Image_2026-04-21_at_8.28.11_PM-removebg-preview.png" id="3_j6oad"]
+[ext_resource type="FontFile" uid="uid://wb6btfnn8cdp" path="res://sprites/PressStart2P-Regular.ttf" id="3_ulgj7"]
+[ext_resource type="StyleBox" uid="uid://c0hyw4bqv4jgq" path="res://entities/btn-style-focus.tres" id="4_gh7ws"]
+[ext_resource type="StyleBox" uid="uid://w76wsu6m5dwo" path="res://entities/btn-style.tres" id="4_ulgj7"]
+[ext_resource type="StyleBox" uid="uid://b5gm5lkcmtxq3" path="res://entities/btn-style-pressed.tres" id="5_t18hh"]
+[ext_resource type="Texture2D" uid="uid://pllw0sk3p2mg" path="res://sprites/pernilongo_F1.png" id="8_rbyiy"]
+[ext_resource type="Texture2D" uid="uid://8orxdnvu7vbf" path="res://sprites/pernilongo_F2.png" id="9_nohhj"]
+[ext_resource type="Texture2D" uid="uid://d1creuktikw2n" path="res://sprites/pernilongo_F3.png" id="10_t65bv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t18hh"]
+bg_color = Color(0, 0, 0, 0.752941)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_tn2ht"]
+frames = 3
+frame_0/texture = ExtResource("8_rbyiy")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("9_nohhj")
+frame_1/duration = 0.3
+frame_2/texture = ExtResource("10_t65bv")
+frame_2/duration = 0.3
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2fir4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wxbcn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t18hh")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="new_btn" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_ulgj7")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("4_gh7ws")
+theme_override_styles/hover = ExtResource("5_t18hh")
+theme_override_styles/pressed = ExtResource("5_t18hh")
+theme_override_styles/normal = ExtResource("4_ulgj7")
+text = "NOVO JOGO"
+
+[node name="load_btn" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_ulgj7")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("4_gh7ws")
+theme_override_styles/hover = ExtResource("5_t18hh")
+theme_override_styles/pressed = ExtResource("5_t18hh")
+theme_override_styles/normal = ExtResource("4_ulgj7")
+text = "CARREGAR"
+
+[node name="credits_btn" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_ulgj7")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("4_gh7ws")
+theme_override_styles/hover = ExtResource("5_t18hh")
+theme_override_styles/pressed = ExtResource("5_t18hh")
+theme_override_styles/normal = ExtResource("4_ulgj7")
+text = "CREDITOS"
+
+[node name="quit_btn" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_ulgj7")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("4_gh7ws")
+theme_override_styles/hover = ExtResource("5_t18hh")
+theme_override_styles/pressed = ExtResource("5_t18hh")
+theme_override_styles/normal = ExtResource("4_ulgj7")
+text = "SAIR
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="game_logo" type="TextureRect" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_j6oad")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="enemy_home" type="TextureRect" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(100, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_tn2ht")
+expand_mode = 3
+stretch_mode = 5
