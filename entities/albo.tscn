@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://cg4kbbd4r6kl5"]
+
+[ext_resource type="Script" uid="uid://dx4dnbci7samg" path="res://entities/albo.gd" id="1_dpb6u"]
+[ext_resource type="Texture2D" uid="uid://c43y0kwbmbxnl" path="res://sprites/Aedes_albopictus(inimigo).png" id="2_dpb6u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2xtr"]
+size = Vector2(21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0mvj"]
+atlas = ExtResource("2_dpb6u")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lw4m"]
+atlas = ExtResource("2_dpb6u")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3f5e"]
+atlas = ExtResource("2_dpb6u")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4gm8i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0mvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lw4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3f5e")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0mvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lw4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3f5e")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0mvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lw4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3f5e")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0rt6l"]
+radius = 8.49575
+height = 22.0523
+
+[node name="albo" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 4
+script = ExtResource("1_dpb6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.50001, 0.500018)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_t2xtr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.484375, 0.4375)
+sprite_frames = SubResource("SpriteFrames_4gm8i")
+animation = &"dead"
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-2, 0)
+rotation = 1.53916
+shape = SubResource("CapsuleShape2D_0rt6l")
+debug_color = Color(0.892047, 0.252845, 0.516127, 0.42)
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+position = Vector2(16, 6)
+rotation = 3.1398
+target_position = Vector2(40, 0)
+
+[node name="GroundDetector" type="RayCast2D" parent="."]
+position = Vector2(-16, -4)
+target_position = Vector2(0, 21)
+
+[node name="PlayerDetector" type="RayCast2D" parent="."]
+target_position = Vector2(-53, 0)
+collision_mask = 2

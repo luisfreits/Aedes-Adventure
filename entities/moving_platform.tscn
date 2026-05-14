@@ -1,18 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://nvlq1wc8ltp"]
 
 [ext_resource type="Script" uid="uid://dsgxpimy0vikf" path="res://scripts/moving_platform.gd" id="1_gp4lh"]
-[ext_resource type="Texture2D" uid="uid://no1flxp03suf" path="res://sprites/unstable_tile.png" id="2_0q7ip"]
+[ext_resource type="Texture2D" uid="uid://dxm7v7j6jjujt" path="res://sprites/plataforma_flutuante.png" id="2_gp4lh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsqcd"]
-size = Vector2(20, 16)
+size = Vector2(34, 4)
 
 [node name="moving_platform" type="AnimatableBody2D"]
 script = ExtResource("1_gp4lh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(13, 13)
-texture = ExtResource("2_0q7ip")
+position = Vector2(-9.53674e-07, 2.38419e-07)
+scale = Vector2(0.010625, 0.01875)
+texture = ExtResource("2_gp4lh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_tsqcd")

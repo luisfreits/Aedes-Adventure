@@ -1,7 +1,6 @@
 [gd_scene load_steps=20 format=4 uid="uid://bkvnhoku8as2b"]
 
 [ext_resource type="PackedScene" uid="uid://bo8bave6oh2d3" path="res://entities/player.tscn" id="1_mv7q4"]
-[ext_resource type="PackedScene" uid="uid://cj82a2i3gibdd" path="res://entities/pernilongo.tscn" id="2_xdrxq"]
 [ext_resource type="PackedScene" uid="uid://b0jwco6a4xyra" path="res://scene/scrolling_scene.tscn" id="3_f8w12"]
 [ext_resource type="PackedScene" uid="uid://1i52xwtxj5y6" path="res://entities/camera_2d.tscn" id="4_q8688"]
 [ext_resource type="PackedScene" uid="uid://8wbm8c2yvkbm" path="res://scene/terrain.tscn" id="5_307il"]
@@ -11,8 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://x4n31ot4pshc" path="res://entities/damage_tile.tscn" id="9_84k3l"]
 [ext_resource type="PackedScene" uid="uid://ctkpjywqnx8cj" path="res://entities/hit_pop.tscn" id="10_b6606"]
 [ext_resource type="Texture2D" uid="uid://cvcm861fnj85c" path="res://sprites/criança_favela.png" id="11_bbhtg"]
-[ext_resource type="PackedScene" uid="uid://7k8ttqjpk201" path="res://scripts/unstable_tiles.tscn" id="12_xdrxq"]
+[ext_resource type="PackedScene" uid="uid://dessqda44bya7" path="res://entities/boss.tscn" id="13_307il"]
 [ext_resource type="PackedScene" uid="uid://nvlq1wc8ltp" path="res://entities/moving_platform.tscn" id="13_f8w12"]
+[ext_resource type="PackedScene" uid="uid://7k8ttqjpk201" path="res://entities/unstable_tiles.tscn" id="13_q8688"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvp2h"]
 size = Vector2(20, 260)
@@ -483,9 +483,6 @@ shape = SubResource("RectangleShape2D_rvp2h")
 position = Vector2(37, 140)
 collision_mask = 17
 
-[node name="Pernilongo" parent="." instance=ExtResource("2_xdrxq")]
-position = Vector2(510, 112)
-
 [node name="ScrollingScene" parent="." instance=ExtResource("3_f8w12")]
 z_index = -50
 position = Vector2(-6, 39)
@@ -614,14 +611,17 @@ light_mask = 0
 position = Vector2(948, -20)
 tile_map_data = PackedByteArray("AACAABAAAQADAAEAAACCABAAAQADAAEAAACEABAAAQADAAEAAACGABAAAQADAAEAAACIABAAAQADAAEAAAAnABIAAQAAAAEAAAAoABIAAQABAAEAAAApABIAAQACAAEAAAAqABIAAQADAAEAAAAlABIAAQAAAAEAAAAtABIAAQABAAEAAAAvABIAAQABAAEAAAASAAgAAQAAAAEAAAAUAAgAAQAAAAEAAAAWAAgAAQAAAAEAAAAGAAkABAAAAAAAAAAHAAkABAAAAAAAAAAJAAkABAAAAAAAAAAIAAkABAAAAAAAAAA=")
 
-[node name="unstable_tiles" parent="." instance=ExtResource("12_xdrxq")]
-position = Vector2(147, 120)
-
 [node name="moving_platform" parent="." instance=ExtResource("13_f8w12")]
 position = Vector2(83, 87)
 point_b_offset = Vector2(70, 0)
 speed = 50.0
 pause_time_a = 3.0
 pause_time_b = 3.0
+
+[node name="unstable_tiles" parent="." instance=ExtResource("13_q8688")]
+position = Vector2(149, 123)
+
+[node name="boss" parent="." instance=ExtResource("13_307il")]
+position = Vector2(452, 142)
 
 [editable path="LevelEnd"]
