@@ -1,0 +1,9 @@
+
+.godot/
+/android/
+.godot/mono/
+bin/
+obj/
+*.sln
+*.csproj
+.vscode/

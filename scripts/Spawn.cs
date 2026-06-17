@@ -1,0 +1,236 @@
+using Godot;
+using System.Collections.Generic;
+
+public partial class Spawn : Area2D
+{
+    //================= EXPORTS =======================
+    // cena do mosquito a ser instanciada
+    [Export] public PackedScene MosquitoScene;
+    //max de mosquitos ao mesmo tempo
+    [Export] public int MaxMosquitos;
+    //delay entre spawns
+    [Export] public float SpawnDelay = 2.0f;
+    [Export] public bool HasAnimation = false;
+    [Export] public string AnimationName = "";
+
+    //================REFERENCIAS=====================
+    private Node2D _spawnArea;
+    private Sprite2D _spawnSprite;
+    private Timer _timer;
+    private CollisionShape2D _spawnShape;
+    private Area2D _interactArea;
+    private Area2D _playerAround; // Nova referência adicionada
+
+
+    //============= BOOLS ===============================
+    private bool _playerInside = false;
+    private bool _playerInInteract = false;
+    private bool _beingCleaned = false;
+
+
+    //============ LISTA DE MOSQUITOS ==================
+    private List<Node> _mosquitos = new List<Node>();
+
+
+    //================FUNÇOES===================
+    public override void _Ready()
+    {
+        //busca os nós da referencia
+        _spawnArea = GetNode<Node2D>("SpawnArea");
+        _spawnSprite = GetNode<Sprite2D>("SpawnArea/Sprite2D");
+        _timer = GetNode<Timer>("Timer");
+        _spawnShape = GetNode<CollisionShape2D>("SpawnShape");
+        _interactArea = GetNode<Area2D>("InteractArea");
+        _playerAround = GetNode<Area2D>("PlayerAround"); // Busca o novo nó
+
+        //conecta sinais referente a area que leva o script (Agora usando PlayerAround)
+        _playerAround.BodyEntered += OnPlayerAroundEntered;
+        _playerAround.BodyExited += OnPlayerAroundExited;
+
+        _interactArea.BodyEntered += OnInteractEntered;
+        _interactArea.BodyExited += OnInteractExited;
+
+
+        //configura e conecta o timer do spawn
+        _timer.WaitTime = SpawnDelay;
+        _timer.Timeout += OnTimerTimeout;
+    }
+
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        //so vai rodar se o player estiver dentro da area e nao estiver interajindo com o obj
+        if (!_playerInInteract || _beingCleaned) return; //nao esta interajindo nem limpando
+        if (!@event.IsActionPressed("interact")) return; //se o evento nao for interajri
+
+        //se tiver dboa ele limpa
+        StartClean();
+    }
+
+    //async void tem await mas n espera
+    //usa void e nao task pq e disparado por input
+    //godot nao espera task, se fosse task o retorno seria ignorado
+
+    private async void StartClean()
+    {
+        //impede o jogador de spammar e bugar algo
+        _beingCleaned = true;
+        //time pausa pro jogador n ser morto enquanto limpa
+        //por novos mosquitos
+        _timer.Stop();
+
+        //busca o player e retorna um nó generico
+        var player = GetTree().GetFirstNodeInGroup("Player");
+
+        /*
+        //checa se o player existe na cena antes de usar
+        if(player == null)
+        {
+            //se nao ainda remova a poça
+            QueueFree();
+            return;
+        }
+        */
+
+        //o player que temos e um no generico sem metodos, precisamos fzr cast
+        //variavel pega player e trata como um Player "class"
+        var typedPlayer = player as Player;
+
+        //congela o jogador pra ele n sair andando enquanto faz a animação
+        player.SetPhysicsProcess(false);
+
+        //zera a velocidade tbm
+        typedPlayer.Set("Velocity", Vector2.Zero);
+
+        //=========IMPORTANTE!!! INVENCIBILIDADE===========
+        //pra evitar que algum mosquito que tenha sobrado mate o joagdor enquanto ele
+        //executa a animação, acessamos a propriedade dele pelo typedPlayer e deixamos ele invencivel
+        typedPlayer.IsInvincible = true;
+
+        // aqui se o obj de spawn tiver animação vai rodar
+        if (HasAnimation != false)
+        {
+            var animPlayer = player.GetNodeOrNull<AnimatedSprite2D>("anim");
+
+            if (animPlayer != null && animPlayer.SpriteFrames.HasAnimation("tampar"))
+            {
+                animPlayer.Play("tampar");
+
+                //while pra evitar bugs de interrupção
+                while (animPlayer.Animation == "tampar" && animPlayer.IsPlaying())
+                {
+                    //apos um frame roda dnv
+                    await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                }
+            }
+        }
+
+        //===============IMPORTANTE INVENCIBVILIDADE=================
+        //ja que vai ligado aqui, desliga aqui tbm
+        if (typedPlayer != null) typedPlayer.IsInvincible = false; //agora ja pode jgr no vasco
+
+        //agora ja pode correr do vasco
+        typedPlayer.SetPhysicsProcess(true);
+
+        player.SetPhysicsProcess(true);
+
+        typedPlayer.GoToIdleState();
+
+        //limpa o spawn
+        QueueFree();
+    }
+
+
+    //sinais area de interação
+    private void OnInteractEntered(Node2D body)
+    {
+        if (body.IsInGroup("Player"))
+        {
+            _playerInInteract = true;
+        }
+    }
+
+    private void OnInteractExited(Node2D body)
+    {
+        if (body.IsInGroup("Player")) _playerInInteract = false;
+    }
+
+    // ====== NOVAS FUNÇÕES PARA O PLAYER AROUND ======
+    private void OnPlayerAroundEntered(Node2D body)
+    {
+        if (body.IsInGroup("Player"))
+        {
+            _playerInside = true;
+            _timer.Start();
+        }
+    }
+
+    private void OnPlayerAroundExited(Node2D body)
+    {
+        if (body.IsInGroup("Player"))
+        {
+            _playerInside = false;
+            _timer.Stop();
+        }
+    }
+
+    //==========Spawn==================
+    private void OnTimerTimeout()
+    {
+        //checa a validade dos mosquitos na lista
+        //no sentido de que quando morrem e dão queueFree nao estao mais na memoria
+        _mosquitos.RemoveAll(m => !IsInstanceValid(m));
+
+        // verifica limite de mosquitos vivos
+        if (_mosquitos.Count >= MaxMosquitos) return;
+        if (MosquitoScene == null) return;
+
+        // instancia e adiciona o mosquito na cena, e diferente do new, esse puxa sprites anim etc.
+        var mosquito = MosquitoScene.Instantiate();
+        //adiciona na fase e nao na poça um mosquito
+        GetTree().CurrentScene.AddChild(mosquito);
+
+        // posiciona no spawn aleatório
+        var mosquitoNode = (CharacterBody2D)mosquito;
+        mosquitoNode.GlobalPosition = RandomSpawnPos();
+
+        // Sorteia a direção de movimento: 1 para direita, -1 para esquerda
+        int randomDirection = GD.Randf() > 0.5f ? 1 : -1;
+
+        // Injeta a direção no script do mosquito usando Set().
+        // Troque "Direction" pelo nome exato da variável que controla o lado que ele anda no seu script do Mosquito!
+        mosquitoNode.Set("Direction", randomDirection);
+
+        // se for pra esquedrda chama função flip
+        if (randomDirection == -1)
+        {
+            mosquitoNode.Call("Flip");
+        }
+
+        // adiciona à lista de mosquitos vivos
+        _mosquitos.Add(mosquito);
+    }
+
+    private Vector2 RandomSpawnPos()
+    {
+        //define posicao
+        Vector2 center = _spawnShape.GlobalPosition;
+
+        //ve se a area e um retangulo
+        if (_spawnShape.Shape is RectangleShape2D rect)
+        {
+            //define escala
+            Vector2 scale = _spawnShape.GetTransform().Scale;
+            //define tamanho real
+            Vector2 size = rect.Size;
+
+            float rx = (float)GD.RandRange(-size.X / 2, size.X / 2);
+            float ry = (float)GD.RandRange(-size.Y / 2, size.Y / 2);
+            
+            
+
+            return center + new Vector2(rx, ry);
+        }
+
+        return center;
+    }
+}

@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://cj82a2i3gibdd"]
+
+[ext_resource type="Script" uid="uid://hcovecxf3s6e" path="res://scripts/Pernilongo.cs" id="1_t2xtr"]
+[ext_resource type="Texture2D" uid="uid://cen3yoewj0wl" path="res://sprites/pernilongo.png" id="3_h8dw8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2xtr"]
+size = Vector2(21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy44t"]
+atlas = ExtResource("3_h8dw8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbmb0"]
+atlas = ExtResource("3_h8dw8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojpjk"]
+atlas = ExtResource("3_h8dw8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4gm8i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy44t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbmb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojpjk")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy44t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbmb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojpjk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy44t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbmb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojpjk")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0rt6l"]
+radius = 8.49575
+height = 22.0523
+
+[node name="Pernilongo" type="CharacterBody2D" unique_id=671549688 groups=["Enemies", "Need", "Pausable"]]
+collision_layer = 4
+script = ExtResource("1_t2xtr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1658279438]
+position = Vector2(-1.50001, 0.500018)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_t2xtr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1211413346]
+sprite_frames = SubResource("SpriteFrames_4gm8i")
+animation = &"walk"
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1898327100]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1277472256]
+position = Vector2(-2, 0)
+rotation = 1.53916
+shape = SubResource("CapsuleShape2D_0rt6l")
+debug_color = Color(0.892047, 0.252845, 0.516127, 0.42)
+
+[node name="WallDetector" type="RayCast2D" parent="." unique_id=1714111857]
+position = Vector2(16, 6)
+rotation = 3.1398
+target_position = Vector2(40, 0)
+
+[node name="GroundDetector" type="RayCast2D" parent="." unique_id=1608256153]
+position = Vector2(-16, -4)
+target_position = Vector2(0, 21)

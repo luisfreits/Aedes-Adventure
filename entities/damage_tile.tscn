@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://x4n31ot4pshc"]
+
+[ext_resource type="TileSet" uid="uid://crdetqvmrqlfs" path="res://tres/damage_tile.tres" id="1_t48be"]
+[ext_resource type="Script" uid="uid://4qiqa082dfxc" path="res://scripts/DamageTile.cs" id="2_t48be"]
+
+[node name="damage_tile" type="TileMapLayer" unique_id=1241142983]
+tile_set = ExtResource("1_t48be")
+script = ExtResource("2_t48be")

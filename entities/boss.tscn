@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://dessqda44bya7"]
+
+[ext_resource type="Script" uid="uid://cxsmoi6rinwei" path="res://scripts/Boss.cs" id="1_v85xe"]
+[ext_resource type="Texture2D" uid="uid://ge3n5pter5tq" path="res://sprites/boss_design.png" id="2_v85xe"]
+[ext_resource type="Texture2D" uid="uid://57wfjpt1at2l" path="res://sprites/boss_v2.png" id="4_e0qs4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2xtr"]
+size = Vector2(21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p7h5"]
+atlas = ExtResource("2_v85xe")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2m23"]
+atlas = ExtResource("4_e0qs4")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_077ma"]
+atlas = ExtResource("4_e0qs4")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luanr"]
+atlas = ExtResource("4_e0qs4")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbcdj"]
+atlas = ExtResource("4_e0qs4")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jo83"]
+atlas = ExtResource("4_e0qs4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g47ws"]
+atlas = ExtResource("4_e0qs4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k0u5"]
+atlas = ExtResource("4_e0qs4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jfgf"]
+atlas = ExtResource("4_e0qs4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohbu8"]
+atlas = ExtResource("4_e0qs4")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k7ro"]
+atlas = ExtResource("4_e0qs4")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in6f0"]
+atlas = ExtResource("4_e0qs4")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4gm8i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4p7h5")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2m23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_077ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luanr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbcdj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jo83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g47ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k0u5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jfgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohbu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6k7ro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in6f0")
+}],
+"loop": true,
+"name": &"stun",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0rt6l"]
+radius = 8.49575
+height = 22.0523
+
+[node name="boss" type="CharacterBody2D" unique_id=327348004 groups=["Enemies", "Pausable"]]
+collision_layer = 136
+script = ExtResource("1_v85xe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1583137297]
+position = Vector2(-1.50001, 0.500018)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_t2xtr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1663677130]
+scale = Vector2(0.484375, 0.4375)
+sprite_frames = SubResource("SpriteFrames_4gm8i")
+animation = &"idle"
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=610963485]
+collision_layer = 132
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1635524361]
+position = Vector2(-2, 0)
+rotation = 1.53916
+shape = SubResource("CapsuleShape2D_0rt6l")
+debug_color = Color(0.892047, 0.252845, 0.516127, 0.42)
+
+[node name="SpawnPoint" type="Node2D" parent="." unique_id=596943666]
+
+[connection signal="area_entered" from="Hitbox" to="." method="OnHitboxAreaEntered"]

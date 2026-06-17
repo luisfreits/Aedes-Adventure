@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bd08o77cgxx7"]
+
+[ext_resource type="Script" uid="uid://d02boemotcov" path="res://scripts/Creditos.cs" id="1_xb7vv"]
+[ext_resource type="Texture2D" uid="uid://13kgcu5p28cq" path="res://sprites/creditos.png" id="2_mxdgy"]
+[ext_resource type="FontFile" uid="uid://wb6btfnn8cdp" path="res://sprites/PressStart2P-Regular.ttf" id="3_21gw6"]
+[ext_resource type="StyleBox" uid="uid://w76wsu6m5dwo" path="res://tres/btn-style.tres" id="4_w300s"]
+[ext_resource type="StyleBox" uid="uid://b5gm5lkcmtxq3" path="res://tres/btn-style-pressed.tres" id="5_13vnm"]
+[ext_resource type="StyleBox" uid="uid://c02k1xl0snk6k" path="res://tres/btn-style-hover.tres" id="6_t46wx"]
+[ext_resource type="StyleBox" uid="uid://c0hyw4bqv4jgq" path="res://tres/btn-style-focus.tres" id="7_f7gy7"]
+
+[node name="Creditos" type="Control" unique_id=1325336742]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xb7vv")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1472940508]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mxdgy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1327195418]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="back_btn" type="Button" parent="MarginContainer" unique_id=989994547]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_21gw6")
+theme_override_styles/normal = ExtResource("4_w300s")
+theme_override_styles/pressed = ExtResource("5_13vnm")
+theme_override_styles/hover = ExtResource("6_t46wx")
+theme_override_styles/focus = ExtResource("7_f7gy7")
+text = "VOLTAR"
+
+[connection signal="pressed" from="MarginContainer/back_btn" to="." method="OnBackBtnPressed"]

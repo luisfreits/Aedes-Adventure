@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://0wn4x7qrb0vb"]
+
+[ext_resource type="Script" uid="uid://bovvjs4xstjqa" path="res://scripts/DialogTrigger.cs" id="1_5acuh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvp2h"]
+size = Vector2(20, 8)
+
+[node name="hit_pop" type="Area2D" unique_id=87796432]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_5acuh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=638818283]
+position = Vector2(-2, 6)
+shape = SubResource("RectangleShape2D_rvp2h")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyExited"]

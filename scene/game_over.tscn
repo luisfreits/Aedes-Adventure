@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://dnp4bbxhnbvxj"]
+
+[ext_resource type="Script" uid="uid://bilnaoclwiv2c" path="res://scripts/GameOver.cs" id="1_p3ufs"]
+[ext_resource type="Texture2D" uid="uid://cydc0ihpcpa48" path="res://sprites/cav_01.png" id="3_0wuup"]
+[ext_resource type="Texture2D" uid="uid://dymohl6607ew6" path="res://sprites/cav_02.png" id="4_nhro7"]
+[ext_resource type="FontFile" uid="uid://wb6btfnn8cdp" path="res://sprites/PressStart2P-Regular.ttf" id="7_asisa"]
+[ext_resource type="StyleBox" uid="uid://c0hyw4bqv4jgq" path="res://tres/btn-style-focus.tres" id="8_o5sma"]
+[ext_resource type="StyleBox" uid="uid://b5gm5lkcmtxq3" path="res://tres/btn-style-pressed.tres" id="9_c331k"]
+[ext_resource type="StyleBox" uid="uid://w76wsu6m5dwo" path="res://tres/btn-style.tres" id="10_8xb4k"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p3ufs"]
+load_path = "res://.godot/imported/cenario 3.png-9eb0c481f9ac50e7b3edf578e6cd6926.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t18hh"]
+bg_color = Color(0, 0, 0, 0.9490196)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_qbgy4"]
+frames = 2
+frame_0/texture = ExtResource("3_0wuup")
+frame_1/texture = ExtResource("4_nhro7")
+frame_1/duration = 0.5
+
+[node name="game_over" type="Control" unique_id=1342353881]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p3ufs")
+
+[node name="bg" type="TextureRect" parent="." unique_id=885489140]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_p3ufs")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1909668156]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=281264927]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t18hh")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=1378267971]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer" unique_id=434420911]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=1273056550]
+position = Vector2(96, 66)
+scale = Vector2(2.5, 2.5)
+texture = SubResource("AnimatedTexture_qbgy4")
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=1016579430]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_asisa")
+theme_override_font_sizes/font_size = 52
+text = "GAME
+OVER"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=925144711]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_asisa")
+theme_override_font_sizes/font_size = 13
+text = "JOGAR NOVAMENTE?"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=802448365]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/MarginContainer" unique_id=1094144073]
+layout_mode = 2
+
+[node name="sim" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/MarginContainer/HBoxContainer" unique_id=1843981586]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("7_asisa")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = ExtResource("10_8xb4k")
+theme_override_styles/pressed = ExtResource("9_c331k")
+theme_override_styles/hover = ExtResource("9_c331k")
+theme_override_styles/focus = ExtResource("8_o5sma")
+text = "SIM"
+
+[node name="nao" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/MarginContainer/HBoxContainer" unique_id=1914958285]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("7_asisa")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = ExtResource("10_8xb4k")
+theme_override_styles/pressed = ExtResource("9_c331k")
+theme_override_styles/hover = ExtResource("9_c331k")
+theme_override_styles/focus = ExtResource("8_o5sma")
+text = "NÃO"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1672001374]
+
+[node name="soundtrack" type="AudioStreamPlayer" parent="." unique_id=775662188]
+
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/MarginContainer/HBoxContainer/sim" to="." method="OnButtonMouseEntered"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/MarginContainer/HBoxContainer/sim" to="." method="OnSimBtnPressed"]
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/MarginContainer/HBoxContainer/nao" to="." method="OnButtonMouseEntered"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/MarginContainer/HBoxContainer/nao" to="." method="OnNaoBtnPressed"]

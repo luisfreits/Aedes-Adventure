@@ -1,0 +1,61 @@
+using Godot;
+
+public partial class KidArea : Area2D
+{
+    // DialogicTimeline — tipo específico do plugin Dialogic
+    // [Export] — arrasta a timeline no inspetor
+    [Export] public Resource Timeline;
+
+    // controla se o player está dentro da área
+    private bool _playerPresent = false;
+
+    public override void _Ready()
+    {
+        // conecta os sinais de entrada e saída via código
+        BodyEntered += OnBodyEntered;
+        BodyExited  += OnBodyExited;
+    }
+
+    // _UnhandledInput — chamado quando nenhum outro nó consumiu o input
+    // garante que o interact só funciona quando nada mais está usando o input
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        // @ — necessário pois "event" é palavra reservada em C#
+        if (!_playerPresent) return;
+
+        if (!@event.IsActionPressed("interact")) return;
+
+        // verifica se a timeline foi atribuída no inspetor
+        if (Timeline == null)
+        {
+            // GD.PrintErr equivale ao printerr() do GDScript
+            // mostra erro em vermelho no Output sem crashar o jogo
+            GD.PrintErr($"[Erro] Nenhuma timeline foi arrastada para o Inspector deste nó: {Name}");
+            return;
+        }
+
+        // chama o método Start do Dialogic passando a timeline
+        // como Dialogic é um AutoLoad do plugin, acessa pelo caminho
+        // Get busca o AutoLoad pelo caminho — equivale ao Dialogic.start() do GDScript
+        var dialogic = GetNode("/root/Dialogic");
+        dialogic.Call("start", Timeline);
+
+        // SetInputAsHandled marca o input como consumido
+        // outros nós não vão mais reagir a esse mesmo clique
+        // equivale ao get_viewport().set_input_as_handled() do GDScript
+        GetViewport().SetInputAsHandled();
+    }
+
+    private void OnBodyEntered(Node2D body)
+    {
+        // IsInGroup verifica se o nó pertence ao grupo
+        if (body.IsInGroup("Player"))
+            _playerPresent = true;
+    }
+
+    private void OnBodyExited(Node2D body)
+    {
+        if (body.IsInGroup("Player"))
+            _playerPresent = false;
+    }
+}

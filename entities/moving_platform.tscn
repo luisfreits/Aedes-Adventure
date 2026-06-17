@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://nvlq1wc8ltp"]
+
+[ext_resource type="Script" uid="uid://dafwbpmuhrx5k" path="res://scripts/MovingPlatform.cs" id="1_gp4lh"]
+[ext_resource type="Texture2D" uid="uid://gap2v3t1mirk" path="res://sprites/plataforma_flutuante_remake.png" id="2_gp4lh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsqcd"]
+size = Vector2(29, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp4lh"]
+atlas = ExtResource("2_gp4lh")
+region = Rect2(768, 0, 384, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q7ip"]
+atlas = ExtResource("2_gp4lh")
+region = Rect2(1152, 0, 384, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16ejn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp4lh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q7ip")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gp4lh"]
+size = Vector2(25, 6)
+
+[node name="moving_platform" type="AnimatableBody2D" unique_id=107762743 groups=["Pausable"]]
+script = ExtResource("1_gp4lh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2085286967]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_tsqcd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=846429675]
+z_index = 10
+position = Vector2(2, 5)
+scale = Vector2(0.08408203, 0.07319337)
+sprite_frames = SubResource("SpriteFrames_16ejn")
+frame_progress = 0.98060346
+
+[node name="TriggerArea" type="Area2D" parent="." unique_id=1274199193]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea" unique_id=1107359872]
+position = Vector2(-1.5, -3)
+shape = SubResource("RectangleShape2D_gp4lh")

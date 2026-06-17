@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bdtrnb8kreoff"
+path="res://.godot/imported/tela inicial(menu).mp3-f0e358fc8de3f8789e0d77e650861eb3.mp3str"
+
+[deps]
+
+source_file="res://aedes_sounds/aedes_sounds/tela inicial(menu).mp3"
+dest_files=["res://.godot/imported/tela inicial(menu).mp3-f0e358fc8de3f8789e0d77e650861eb3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

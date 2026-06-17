@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8wsyrqojce1k"
+path="res://.godot/imported/extra life.mp3-8af13f0059de933f2146e847f943e1dc.mp3str"
+
+[deps]
+
+source_file="res://aedes_sounds/aedes_sounds/extra life.mp3"
+dest_files=["res://.godot/imported/extra life.mp3-8af13f0059de933f2146e847f943e1dc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,631 @@
+[gd_scene format=4 uid="uid://bkvnhoku8as2b"]
+
+[ext_resource type="PackedScene" uid="uid://bo8bave6oh2d3" path="res://entities/player.tscn" id="1_mv7q4"]
+[ext_resource type="Script" uid="uid://bvt48fw6ykpro" path="res://scripts/Cenario01.cs" id="1_yk2fw"]
+[ext_resource type="PackedScene" uid="uid://1i52xwtxj5y6" path="res://entities/camera_2d.tscn" id="4_q8688"]
+[ext_resource type="PackedScene" uid="uid://8wbm8c2yvkbm" path="res://scene/terrain.tscn" id="5_307il"]
+[ext_resource type="Texture2D" uid="uid://v16hsd0wt3f3" path="res://sprites/sign_para_cima.png" id="7_74nde"]
+[ext_resource type="PackedScene" uid="uid://cyjges3djtow3" path="res://entities/level_end.tscn" id="7_hk8km"]
+[ext_resource type="Script" uid="uid://bwmtyucq4ld42" path="res://scripts/KillZone.cs" id="8_84k3l"]
+[ext_resource type="PackedScene" uid="uid://x4n31ot4pshc" path="res://entities/damage_tile.tscn" id="9_84k3l"]
+[ext_resource type="Script" uid="uid://dafwbpmuhrx5k" path="res://scripts/MovingPlatform.cs" id="10_hk8km"]
+[ext_resource type="Texture2D" uid="uid://gap2v3t1mirk" path="res://sprites/plataforma_flutuante_remake.png" id="11_yk2fw"]
+[ext_resource type="PackedScene" uid="uid://cj82a2i3gibdd" path="res://entities/pernilongo.tscn" id="13_307il"]
+[ext_resource type="PackedScene" uid="uid://7k8ttqjpk201" path="res://entities/unstable_tiles.tscn" id="13_q8688"]
+[ext_resource type="Resource" uid="uid://d31fpsapfq2pl" path="res://timelines/placa_instavel.dtl" id="14_b6606"]
+[ext_resource type="PackedScene" uid="uid://t2asgqm81lmj" path="res://entities/kid.tscn" id="15_74nde"]
+[ext_resource type="PackedScene" uid="uid://dlknkawow3q5b" path="res://entities/placa.tscn" id="15_307il"]
+[ext_resource type="Resource" uid="uid://dvc2pdotnv5s4" path="res://timelines/placa_pulo.dtl" id="16_74nde"]
+[ext_resource type="Resource" uid="uid://w0xws3jw4g1g" path="res://timelines/timeline-0101.dtl" id="16_hk8km"]
+[ext_resource type="PackedScene" uid="uid://4onap4ntuu06" path="res://scene/cano.tscn" id="18_yk2fw"]
+[ext_resource type="PackedScene" uid="uid://b0jwco6a4xyra" path="res://scene/Background01.tscn" id="19_84k3l"]
+[ext_resource type="PackedScene" uid="uid://boo1ejgww7feh" path="res://entities/lixeira.tscn" id="19_b6606"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_74nde"]
+load_path = "res://.godot/imported/Subway_tiles.png-e259b4a9e2cc9b15fede3f4c128bd29e.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uietq"]
+texture = SubResource("CompressedTexture2D_74nde")
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+17:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+20:1/0 = 0
+21:1/0 = 0
+23:1/0 = 0
+24:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/next_alternative_id = 6
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+20:2/0 = 0
+21:2/0 = 0
+23:2/0 = 0
+24:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/next_alternative_id = 3
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
+19:3/0 = 0
+21:3/0 = 0
+22:3/0 = 0
+24:3/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+19:4/0 = 0
+21:4/0 = 0
+22:4/0 = 0
+24:4/0 = 0
+0:5/0 = 0
+2:5/0 = 0
+4:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+19:5/0 = 0
+21:5/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+16:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+0:7/0 = 0
+2:7/0 = 0
+4:7/0 = 0
+6:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+16:7/0 = 0
+17:7/0 = 0
+18:7/0 = 0
+19:7/0 = 0
+20:7/0 = 0
+21:7/0 = 0
+5:8/0 = 0
+7:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+16:8/0 = 0
+17:8/0 = 0
+18:8/0 = 0
+19:8/0 = 0
+20:8/0 = 0
+21:8/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+17:9/0 = 0
+18:9/0 = 0
+19:9/0 = 0
+20:9/0 = 0
+21:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+7:10/0 = 0
+9:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+17:10/0 = 0
+18:10/0 = 0
+19:10/0 = 0
+20:10/0 = 0
+21:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+16:11/0 = 0
+17:11/0 = 0
+18:11/0 = 0
+19:11/0 = 0
+20:11/0 = 0
+21:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+14:12/0 = 0
+15:12/0 = 0
+16:12/0 = 0
+17:12/0 = 0
+18:12/0 = 0
+19:12/0 = 0
+20:12/0 = 0
+21:12/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+16:13/0 = 0
+17:13/0 = 0
+18:13/0 = 0
+19:13/0 = 0
+20:13/0 = 0
+21:13/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+14:14/0 = 0
+15:14/0 = 0
+16:14/0 = 0
+17:14/0 = 0
+18:14/0 = 0
+19:14/0 = 0
+20:14/0 = 0
+21:14/0 = 0
+22:14/0 = 0
+24:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+12:15/0 = 0
+13:15/0 = 0
+14:15/0 = 0
+15:15/0 = 0
+16:15/0 = 0
+17:15/0 = 0
+18:15/0 = 0
+19:15/0 = 0
+20:15/0 = 0
+21:15/0 = 0
+22:15/0 = 0
+24:15/0 = 0
+0:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+8:16/0 = 0
+11:16/0 = 0
+12:16/0 = 0
+13:16/0 = 0
+14:16/0 = 0
+15:16/0 = 0
+16:16/0 = 0
+17:16/0 = 0
+18:16/0 = 0
+19:16/0 = 0
+20:16/0 = 0
+21:16/0 = 0
+22:16/0 = 0
+24:16/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+7:17/0 = 0
+11:17/0 = 0
+12:17/0 = 0
+13:17/0 = 0
+14:17/0 = 0
+15:17/0 = 0
+16:17/0 = 0
+17:17/0 = 0
+18:17/0 = 0
+19:17/0 = 0
+20:17/0 = 0
+21:17/0 = 0
+22:17/0 = 0
+24:17/0 = 0
+1:18/0 = 0
+2:18/0 = 0
+3:18/0 = 0
+4:18/0 = 0
+5:18/0 = 0
+6:18/0 = 0
+7:18/0 = 0
+8:18/0 = 0
+10:18/0 = 0
+11:18/0 = 0
+12:18/0 = 0
+13:18/0 = 0
+14:18/0 = 0
+15:18/0 = 0
+16:18/0 = 0
+17:18/0 = 0
+18:18/0 = 0
+19:18/0 = 0
+20:18/0 = 0
+21:18/0 = 0
+22:18/0 = 0
+23:18/0 = 0
+24:18/0 = 0
+0:19/0 = 0
+2:19/0 = 0
+4:19/0 = 0
+11:19/0 = 0
+12:19/0 = 0
+13:19/0 = 0
+14:19/0 = 0
+15:19/0 = 0
+16:19/0 = 0
+17:19/0 = 0
+18:19/0 = 0
+19:19/0 = 0
+20:19/0 = 0
+21:19/0 = 0
+22:19/0 = 0
+23:19/0 = 0
+24:19/0 = 0
+4:20/0 = 0
+11:20/0 = 0
+12:20/0 = 0
+13:20/0 = 0
+14:20/0 = 0
+15:20/0 = 0
+16:20/0 = 0
+17:20/0 = 0
+18:20/0 = 0
+19:20/0 = 0
+20:20/0 = 0
+21:20/0 = 0
+22:20/0 = 0
+23:20/0 = 0
+24:20/0 = 0
+11:21/0 = 0
+12:21/0 = 0
+13:21/0 = 0
+14:21/0 = 0
+15:21/0 = 0
+16:21/0 = 0
+17:21/0 = 0
+18:21/0 = 0
+19:21/0 = 0
+20:21/0 = 0
+21:21/0 = 0
+22:21/0 = 0
+23:21/0 = 0
+24:21/0 = 0
+11:22/0 = 0
+12:22/0 = 0
+13:22/0 = 0
+14:22/0 = 0
+15:22/0 = 0
+16:22/0 = 0
+17:22/0 = 0
+18:22/0 = 0
+19:22/0 = 0
+20:22/0 = 0
+21:22/0 = 0
+22:22/0 = 0
+23:22/0 = 0
+24:22/0 = 0
+11:23/0 = 0
+12:23/0 = 0
+13:23/0 = 0
+14:23/0 = 0
+15:23/0 = 0
+16:23/0 = 0
+17:23/0 = 0
+18:23/0 = 0
+19:23/0 = 0
+20:23/0 = 0
+21:23/0 = 0
+22:23/0 = 0
+23:23/0 = 0
+24:23/0 = 0
+11:24/0 = 0
+12:24/0 = 0
+13:24/0 = 0
+14:24/0 = 0
+15:24/0 = 0
+16:24/0 = 0
+17:24/0 = 0
+18:24/0 = 0
+19:24/0 = 0
+20:24/0 = 0
+21:24/0 = 0
+22:24/0 = 0
+23:24/0 = 0
+24:24/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_33cqm"]
+sources/1 = SubResource("TileSetAtlasSource_uietq")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvp2h"]
+size = Vector2(20, 512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsqcd"]
+size = Vector2(29, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp4lh"]
+atlas = ExtResource("11_yk2fw")
+region = Rect2(768, 0, 384, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q7ip"]
+atlas = ExtResource("11_yk2fw")
+region = Rect2(1152, 0, 384, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16ejn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp4lh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q7ip")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gp4lh"]
+size = Vector2(25, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsrxy"]
+size = Vector2(953, 29)
+
+[node name="Fase-1-1" type="Node2D" unique_id=522247827]
+script = ExtResource("1_yk2fw")
+metadata/_edit_vertical_guides_ = [1015.0, 1744.0, 1769.0, 836.0, 836.0, 673.0, 671.0, 479.0, -17.0, 578.0, 463.0]
+metadata/_edit_horizontal_guides_ = [45.0, 178.0, 145.0, 209.0, -34.0, 3.0, -159.0, -207.0, 158.0, 74.0]
+
+[node name="TileMaps" type="Node" parent="." unique_id=1970707516]
+
+[node name="Terrain" parent="TileMaps" unique_id=1691530211 instance=ExtResource("5_307il")]
+position = Vector2(33, 2)
+tile_map_data = PackedByteArray("AAD+/wwAAwAAAAIAAAD+/w0AAwAAAAEAAAD+/wsAAwAAAAEAAAD+/woAAwAAAAEAAAD+/wkAAwAAAAAAAAD//wkAAwABAAAAAAD//woAAwABAAEAAAD//wsAAwABAAEAAAAAAAkAAwACAAAAAAAAAAoAAwACAAEAAAABAAkAAwADAAAAAAABAAoAAwADAAEAAAABAAsAAwADAAEAAAACAAkAAwABAAAAAAACAAoAAwABAAEAAAACAAsAAwAEAAEAAAADAAsAAwACAAIAAAAGAAsAAwABAAIAAAAGAAwAAwAEAAEAAAD//wwAAwABAAEAAAABAAwAAwADAAEAAAACAAwAAwAEAAEAAAACAA0AAwAEAAIAAAADAA0AAwABAAIAAAAGAA0AAwAEAAIAAAADAAwAAwABAAEAAAD//w0AAwABAAIAAAAAAA0AAwACAAIAAAANAAsAAwADAAAAAAAOAAsAAwAEAAAAAAAOAAwAAwAEAAEAAAAPAAwAAwABAAEAAAAQAAwAAwACAAEAAAARAAwAAwADAAEAAAASAAwAAwAEAAEAAAATAAwAAwABAAEAAAAUAAwAAwACAAEAAAAQAAsAAwACAAAAAAAPAAsAAwABAAAAAAARAAsAAwADAAAAAAASAAsAAwADAAAAAAATAAsAAwAEAAAAAAAUAAsAAwAFAAAAAAANAAwAAwADAAEAAAANAA0AAwADAAIAAAAOAA0AAwAEAAIAAAAPAA0AAwABAAIAAAAQAA0AAwACAAIAAAARAA0AAwADAAIAAAASAA0AAwAEAAIAAAATAA0AAwABAAIAAAAUAA0AAwACAAIAAAAMAAsAAwACAAAAAAAMAAwAAwACAAEAAAAMAA0AAwACAAIAAAAHAAwAAwABAAEAAAAHAA0AAwABAAIAAAAIAAwAAwACAAEAAAAIAA0AAwACAAIAAAAJAAwAAwADAAEAAAAJAA0AAwADAAIAAAAHAAsAAwABAAAAAAAIAAsAAwACAAAAAAAJAAsAAwADAAAAAAAKAAwAAwAEAAEAAAAKAA0AAwAEAAIAAAALAAwAAwABAAEAAAALAA0AAwABAAIAAAAKAAsAAwAEAAAAAAALAAsAAwABAAAAAAD+/w4AAwAAAAIAAAD//w4AAwABAAEAAAD+/w8AAwAAAAEAAAD+/xAAAwAAAAIAAAD//w8AAwABAAIAAAD//xAAAwABAAEAAAD+/xEAAwABAAMAAAD//xEAAwACAAMAAAAAAA4AAwACAAEAAAAAAA8AAwACAAIAAAAAABAAAwACAAEAAAABAA8AAwADAAIAAAABABAAAwADAAEAAAAAABEAAwADAAMAAAABABEAAwAEAAMAAAACAA4AAwAEAAEAAAADAA4AAwABAAEAAAACAA8AAwAEAAIAAAACABAAAwAEAAEAAAADAA8AAwABAAIAAAADABAAAwABAAEAAAADABEAAwACAAMAAAAEABAAAwACAAEAAAAFABAAAwADAAEAAAAEABEAAwADAAMAAAAFABEAAwAEAAMAAAAGAA4AAwAEAAEAAAAHAA4AAwABAAEAAAAGAA8AAwAEAAIAAAAGABAAAwAEAAEAAAAHAA8AAwABAAIAAAAHABAAAwABAAEAAAAGABEAAwABAAMAAAAHABEAAwACAAMAAAAIAA4AAwACAAEAAAAJAA4AAwADAAEAAAAIAA8AAwACAAIAAAAIABAAAwACAAEAAAAJAA8AAwADAAIAAAAJABAAAwADAAEAAAAIABEAAwADAAMAAAAJABEAAwAEAAMAAAAKAA4AAwAEAAEAAAALAA4AAwABAAEAAAAKAA8AAwAEAAIAAAAKABAAAwAEAAEAAAALAA8AAwABAAIAAAALABAAAwABAAEAAAAKABEAAwABAAMAAAALABEAAwACAAMAAAAMAA4AAwACAAEAAAANAA4AAwADAAEAAAAMAA8AAwACAAIAAAAMABAAAwACAAEAAAANAA8AAwADAAIAAAANABAAAwADAAEAAAAMABEAAwADAAMAAAANABEAAwAEAAMAAAAOAA4AAwAEAAEAAAAPAA4AAwABAAEAAAAOAA8AAwAEAAIAAAAOABAAAwAEAAEAAAAPAA8AAwABAAIAAAAPABAAAwABAAEAAAAOABEAAwABAAMAAAAPABEAAwACAAMAAAAQAA4AAwACAAEAAAARAA4AAwADAAEAAAAQAA8AAwACAAIAAAAQABAAAwACAAEAAAARAA8AAwADAAIAAAARABAAAwADAAEAAAAQABEAAwADAAMAAAARABEAAwAEAAMAAAASAA4AAwAEAAEAAAATAA4AAwABAAEAAAASAA8AAwAEAAIAAAASABAAAwAEAAEAAAATAA8AAwABAAIAAAATABAAAwABAAEAAAASABEAAwABAAMAAAATABEAAwACAAMAAAAUAA4AAwACAAEAAAAVAA4AAwADAAEAAAAUAA8AAwACAAIAAAAUABAAAwACAAEAAAAVAA8AAwADAAIAAAAVABAAAwADAAEAAAAUABEAAwADAAMAAAAVABEAAwAEAAMAAAAWAA4AAwAEAAEAAAAXAA4AAwABAAEAAAAWAA8AAwAEAAIAAAAWABAAAwAEAAEAAAAXAA8AAwABAAIAAAAXABAAAwABAAEAAAAWABEAAwABAAMAAAAXABEAAwACAAMAAAAYAA4AAwACAAEAAAAZAA4AAwADAAEAAAAYAA8AAwACAAIAAAAYABAAAwACAAEAAAAZAA8AAwADAAIAAAAZABAAAwADAAEAAAAYABEAAwADAAMAAAAZABEAAwAEAAMAAAAaAA4AAwAEAAEAAAAbAA4AAwABAAEAAAAaAA8AAwAEAAIAAAAaABAAAwAEAAEAAAAbAA8AAwABAAIAAAAbABAAAwABAAEAAAAaABEAAwABAAMAAAAbABEAAwACAAMAAAAcAA0AAwACAAIAAAAcAA4AAwACAAEAAAAdAA0AAwADAAIAAAAdAA4AAwADAAEAAAAcAA8AAwACAAIAAAAcABAAAwACAAEAAAAdAA8AAwADAAIAAAAdABAAAwADAAEAAAAcABEAAwADAAMAAAAdABEAAwAEAAMAAAAeAA0AAwAEAAIAAAAeAA4AAwAEAAEAAAAfAA0AAwABAAIAAAAfAA4AAwABAAEAAAAeAA8AAwAEAAIAAAAeABAAAwAEAAEAAAAfAA8AAwABAAIAAAAfABAAAwABAAEAAAAeABEAAwABAAMAAAAfABEAAwACAAMAAAAgAA0AAwACAAIAAAAgAA4AAwACAAEAAAAhAA0AAwADAAIAAAAhAA4AAwADAAEAAAAgAA8AAwACAAIAAAAgABAAAwACAAEAAAAhAA8AAwADAAIAAAAhABAAAwADAAEAAAAgABEAAwADAAMAAAAhABEAAwAEAAMAAAACABEAAwABAAMAAAAEAAsAAwADAAIAAAAEAAwAAwACAAEAAAAEAA0AAwACAAIAAAAEAA4AAwACAAEAAAAEAA8AAwACAAIAAAAFAAsAAwAEAAIAAAAFAAwAAwADAAEAAAAFAA0AAwADAAIAAAAFAA4AAwADAAEAAAAFAA8AAwADAAIAAAAcAAkAAwAAAAEAAAAcAAoAAwAAAAIAAAAcAAsAAwAAAAEAAAAcAAwAAwACAAEAAAAdAAkAAwABAAEAAAAdAAoAAwADAAEAAAAdAAsAAwADAAIAAAAdAAwAAwADAAEAAAAeAAkAAwACAAEAAAAeAAoAAwAEAAEAAAAeAAsAAwAEAAIAAAAeAAwAAwAEAAEAAAAfAAkAAwADAAEAAAAfAAoAAwABAAEAAAAfAAsAAwABAAIAAAAfAAwAAwABAAEAAAAgAAkAAwAEAAEAAAAgAAoAAwACAAEAAAAgAAsAAwACAAIAAAAgAAwAAwACAAEAAAAhAAkAAwABAAEAAAAhAAoAAwADAAEAAAAhAAsAAwADAAIAAAAhAAwAAwADAAEAAAAVAA0AAwADAAIAAAAWAA0AAwAEAAIAAAAXAA0AAwABAAIAAAAYAA0AAwACAAIAAAAZAA0AAwADAAIAAAAaAA0AAwAEAAIAAAAbAA0AAwABAAIAAAAcAAgAAwAAAAAAAAAdAAgAAwABAAAAAAAeAAgAAwACAAAAAAAfAAgAAwADAAAAAAAgAAgAAwADAAIAAAAhAAgAAwADAAIAAAAiABAAAwAEAAEAAAAiABEAAwABAAMAAAAjABAAAwABAAEAAAAjABEAAwABAAMAAAAkABAAAwACAAEAAAAkABEAAwACAAMAAAAlABAAAwADAAEAAAAlABEAAwADAAMAAAAmABAAAwAEAAEAAAAmABEAAwAEAAMAAAAnABAAAwAFAAEAAAAnABEAAwAFAAMAAAAiAA4AAwAEAAEAAAAiAA8AAwAEAAIAAAAjAA4AAwABAAEAAAAjAA8AAwABAAIAAAAkAA4AAwACAAEAAAAkAA8AAwACAAIAAAAlAA4AAwADAAEAAAAlAA8AAwADAAIAAAAmAA4AAwAEAAEAAAAmAA8AAwAEAAIAAAAnAA4AAwAFAAEAAAAnAA8AAwAFAAEAAAAiAA0AAwAEAAIAAAAjAA0AAwABAAIAAAAkAA0AAwACAAIAAAAlAA0AAwADAAIAAAAmAA0AAwAEAAIAAAAnAA0AAwAFAAEAAAAiAAwAAwAEAAEAAAAjAAwAAwABAAEAAAAkAAwAAwACAAEAAAAlAAwAAwADAAEAAAAmAAwAAwAEAAEAAAAnAAwAAwAFAAEAAAAiAAsAAwAEAAIAAAAjAAsAAwABAAIAAAAkAAsAAwACAAIAAAAlAAsAAwADAAIAAAAmAAsAAwAEAAIAAAAnAAsAAwAFAAEAAAAiAAoAAwAEAAEAAAAjAAoAAwABAAEAAAAkAAoAAwACAAEAAAAlAAoAAwADAAEAAAAmAAoAAwAEAAEAAAAnAAoAAwAFAAEAAAAiAAkAAwABAAEAAAAjAAkAAwABAAEAAAAkAAkAAwACAAEAAAAlAAkAAwADAAEAAAAmAAkAAwAEAAEAAAAnAAkAAwAFAAEAAAAVAAwAAwADAAEAAAAWAAwAAwAEAAEAAAAXAAwAAwABAAEAAAAYAAwAAwACAAEAAAAZAAwAAwADAAEAAAAaAAwAAwAEAAEAAAAbAAwAAwABAAEAAAAfAPr/AwAEAAAAAAAgAPr/AwABAAAAAAAhAPr/AwACAAAAAAAaAPr/AwACAAAAAAAbAPr/AwADAAAAAAAcAPr/AwAEAAAAAAAdAPr/AwACAAAAAAAeAPr/AwADAAAAAAAYAPr/AwADAAAAAAAZAPr/AwAEAAAAAAAVAPr/AwAEAAAAAAAWAPr/AwABAAAAAAAXAPr/AwACAAAAAAARAPr/AwAEAAAAAAASAPr/AwABAAAAAAATAPr/AwACAAAAAAAUAPr/AwADAAAAAAANAPr/AwAAAAAAAAAOAPr/AwABAAAAAAAPAPr/AwACAAAAAAAQAPr/AwADAAAAAAACAAIAAwAAAAAAAAADAAIAAwABAAAAAAAEAAIAAwACAAAAAAAFAAIAAwADAAAAAAAGAAIAAwAEAAAAAAAHAAIAAwAFAAAAAAAiAAgAAwABAAAAAAAjAAgAAwABAAAAAAAkAAgAAwACAAAAAAAlAAgAAwADAAAAAAAmAAgAAwAEAAAAAAAnAAgAAwAFAAAAAAAOAPv/AwAAAAMAAAAPAPv/AwACAAMAAAAQAPv/AwADAAEAAAARAPv/AwAEAAEAAAASAPv/AwABAAIAAAATAPv/AwABAAEAAAAUAPv/AwACAAEAAAAVAPv/AwADAAEAAAAWAPv/AwAEAAEAAAAXAPv/AwABAAEAAAAYAPv/AwACAAEAAAAZAPv/AwADAAEAAAAaAPv/AwAEAAEAAAAbAPv/AwAFAAEAAAAcAPv/AwABAAEAAAAdAPv/AwACAAEAAAAeAPv/AwADAAEAAAAfAPv/AwACAAMAAAAgAPv/AwAFAAMAAAASAPz/AwACAAMAAAATAPz/AwADAAMAAAAUAPz/AwABAAMAAAAVAPz/AwACAAMAAAAWAPz/AwADAAMAAAAXAPz/AwAEAAMAAAAYAPz/AwABAAMAAAAZAPz/AwACAAMAAAAaAPz/AwABAAMAAAAbAPz/AwACAAMAAAAcAPz/AwADAAMAAAAdAPz/AwAEAAMAAAAeAPz/AwAFAAMAAAAQAPz/AwAAAAMAAAARAPz/AwABAAMAAAAgAAcAAwAAAAAAAAAhAAcAAwAFAAAAAAADAAkAAwACAAAAAAADAAoAAwACAAEAAAAEAAkAAwADAAAAAAAEAAoAAwADAAEAAAAFAAkAAwAEAAAAAAAFAAoAAwAEAAEAAAAGAAkAAwAFAAAAAAAGAAoAAwAFAAEAAAABAA0AAwADAAIAAAABAA4AAwADAAEAAAAAAAsAAwACAAEAAAAAAAwAAwACAAEAAAA=")
+
+[node name="Decoration" type="TileMapLayer" parent="TileMaps" unique_id=1896814887]
+tile_set = SubResource("TileSet_33cqm")
+
+[node name="Player" parent="." unique_id=1402070598 instance=ExtResource("1_mv7q4")]
+position = Vector2(16, 133)
+collision_mask = 17
+
+[node name="Camera2D" parent="." unique_id=206117621 instance=ExtResource("4_q8688")]
+limit_top = -260
+limit_right = 578
+limit_bottom = 200
+limit_smoothed = true
+
+[node name="PlacaDiagonal" type="Sprite2D" parent="." unique_id=624072354]
+position = Vector2(558, 90)
+scale = Vector2(-0.174761, 0.159378)
+texture = ExtResource("7_74nde")
+
+[node name="DamageTile" parent="." unique_id=1439702013 groups=["damage_tile"] instance=ExtResource("9_84k3l")]
+light_mask = 0
+position = Vector2(273, 34)
+tile_map_data = PackedByteArray("AAAGAAkABAAAAAAAAAAHAAkABAAAAAAAAAAJAAkABAAAAAAAAAAIAAkABAAAAAAAAAA=")
+
+[node name="DamageTile1" parent="." unique_id=1833760229 groups=["damage_tile"] instance=ExtResource("9_84k3l")]
+light_mask = 0
+position = Vector2(337, 34)
+tile_map_data = PackedByteArray("AAAGAAkABAAAAAAAAAAHAAkABAAAAAAAAAAJAAkABAAAAAAAAAAIAAkABAAAAAAAAAA=")
+
+[node name="Barrier" type="StaticBody2D" parent="." unique_id=790691081]
+position = Vector2(-10, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier" unique_id=1279041855]
+position = Vector2(1, 75)
+shape = SubResource("RectangleShape2D_rvp2h")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Barrier" unique_id=1534330253]
+position = Vector2(596, -20)
+shape = SubResource("RectangleShape2D_rvp2h")
+
+[node name="MovingPlatform" type="AnimatableBody2D" parent="." unique_id=1891927281 groups=["Pausable"]]
+position = Vector2(220, 64)
+script = ExtResource("10_hk8km")
+PointBOffset = Vector2(220, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform" unique_id=2085286967]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_tsqcd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MovingPlatform" unique_id=846429675]
+z_index = 10
+position = Vector2(2, 5)
+scale = Vector2(0.08408203, 0.07319337)
+sprite_frames = SubResource("SpriteFrames_16ejn")
+frame_progress = 0.98060346
+
+[node name="TriggerArea" type="Area2D" parent="MovingPlatform" unique_id=1274199193]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform/TriggerArea" unique_id=1107359872]
+position = Vector2(-1.5, -3)
+shape = SubResource("RectangleShape2D_gp4lh")
+
+[node name="UnstableTile2" parent="." unique_id=88972201 instance=ExtResource("13_q8688")]
+position = Vector2(193, -70)
+
+[node name="UnstableTile1" parent="." unique_id=1387020806 instance=ExtResource("13_q8688")]
+position = Vector2(138, -41)
+
+[node name="UnstableTile" parent="." unique_id=756350968 instance=ExtResource("13_q8688")]
+position = Vector2(77, -11)
+
+[node name="KillZone" type="Area2D" parent="." unique_id=1178748038 groups=["LethalArea"]]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("8_84k3l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=233690527]
+position = Vector2(374.5, 396.5)
+shape = SubResource("RectangleShape2D_xsrxy")
+
+[node name="LevelEnd" parent="." unique_id=2055825833 instance=ExtResource("7_hk8km")]
+position = Vector2(575, -240)
+scale = Vector2(0.7771491, 14.927766)
+NextLevel = "Fase-1-2"
+
+[node name="PlacaUnstable" parent="." unique_id=1127151613 instance=ExtResource("15_307il")]
+position = Vector2(139, 26)
+Timeline = ExtResource("14_b6606")
+
+[node name="PlacaJump" parent="." unique_id=1712264415 instance=ExtResource("15_307il")]
+position = Vector2(356, 168)
+Timeline = ExtResource("16_74nde")
+
+[node name="Kid" parent="." unique_id=255573569 instance=ExtResource("15_74nde")]
+position = Vector2(118, 137)
+Timeline = ExtResource("16_hk8km")
+
+[node name="Cano" parent="." unique_id=1119179540 instance=ExtResource("18_yk2fw")]
+position = Vector2(553, -108)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1417782479]
+
+[node name="Background01" parent="." unique_id=223310989 instance=ExtResource("19_84k3l")]
+z_index = -20
+
+[node name="Lixeira" parent="." unique_id=2031515754 instance=ExtResource("19_b6606")]
+position = Vector2(160, 172)
+MosquitoScene = ExtResource("13_307il")
+MaxMosquitos = 2
+
+[node name="Lixeira2" parent="." unique_id=1421568487 instance=ExtResource("19_b6606")]
+position = Vector2(353, -101)
+MosquitoScene = ExtResource("13_307il")
+MaxMosquitos = 2

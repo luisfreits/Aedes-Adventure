@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://rxyvtbbfs1m5"]
+
+[ext_resource type="Script" uid="uid://6hru24w2lq7t" path="res://scripts/TitleScreen.cs" id="1_rbyiy"]
+[ext_resource type="Texture2D" uid="uid://bopnn5yspwufb" path="res://sprites/cenario_3_remake.png" id="2_rbyiy"]
+[ext_resource type="Texture2D" uid="uid://dtfm32b1hke7m" path="res://sprites/herois.png" id="3_rbyiy"]
+[ext_resource type="FontFile" uid="uid://wb6btfnn8cdp" path="res://sprites/PressStart2P-Regular.ttf" id="3_ulgj7"]
+[ext_resource type="StyleBox" uid="uid://c0hyw4bqv4jgq" path="res://tres/btn-style-focus.tres" id="4_gh7ws"]
+[ext_resource type="Texture2D" uid="uid://cs1icsetq0oc3" path="res://sprites/logof1.png" id="4_nohhj"]
+[ext_resource type="StyleBox" uid="uid://w76wsu6m5dwo" path="res://tres/btn-style.tres" id="4_ulgj7"]
+[ext_resource type="StyleBox" uid="uid://b5gm5lkcmtxq3" path="res://tres/btn-style-pressed.tres" id="5_t18hh"]
+[ext_resource type="Texture2D" uid="uid://qd0flrtxxjma" path="res://sprites/logof2.png" id="5_t65bv"]
+[ext_resource type="Texture2D" uid="uid://b1toxxsl5nhq7" path="res://sprites/logof3.png" id="6_tn2ht"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t18hh"]
+bg_color = Color(0, 0, 0, 0.752941)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_nohhj"]
+frames = 4
+speed_scale = 0.5
+frame_0/texture = ExtResource("4_nohhj")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("5_t65bv")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("6_tn2ht")
+frame_2/duration = 0.5
+frame_3/texture = ExtResource("5_t65bv")
+frame_3/duration = 0.5
+
+[node name="TitleScreen" type="Control" unique_id=1806071643]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rbyiy")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1326704121]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="bg" type="TextureRect" parent="." unique_id=1534384134]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rbyiy")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1581507931]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=137693934]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="herois" type="TextureRect" parent="HBoxContainer/VBoxContainer2" unique_id=1624507221]
+custom_minimum_size = Vector2(80, 180)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+texture = ExtResource("3_rbyiy")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=559591076]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t18hh")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=271767375]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer" unique_id=274569751]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer" unique_id=1377706750]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="logo" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=1286877998]
+custom_minimum_size = Vector2(135, 80)
+layout_mode = 2
+texture = SubResource("AnimatedTexture_nohhj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="new_btn" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=627068339]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_ulgj7")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = ExtResource("4_ulgj7")
+theme_override_styles/pressed = ExtResource("5_t18hh")
+theme_override_styles/hover = ExtResource("5_t18hh")
+theme_override_styles/focus = ExtResource("4_gh7ws")
+text = "NOVO JOGO"
+
+[node name="load_btn" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=1436106830]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_ulgj7")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = ExtResource("4_ulgj7")
+theme_override_styles/pressed = ExtResource("5_t18hh")
+theme_override_styles/hover = ExtResource("5_t18hh")
+theme_override_styles/focus = ExtResource("4_gh7ws")
+text = "CARREGAR"
+
+[node name="run_btn" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=398883773]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_ulgj7")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = ExtResource("4_ulgj7")
+theme_override_styles/pressed = ExtResource("5_t18hh")
+theme_override_styles/hover = ExtResource("5_t18hh")
+theme_override_styles/focus = ExtResource("4_gh7ws")
+text = "MODO RUN"
+
+[node name="rank_btn" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=320883373]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_ulgj7")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = ExtResource("4_ulgj7")
+theme_override_styles/pressed = ExtResource("5_t18hh")
+theme_override_styles/hover = ExtResource("5_t18hh")
+theme_override_styles/focus = ExtResource("4_gh7ws")
+text = "RANKING RUN"
+
+[node name="credits_btn" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=573841825]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_ulgj7")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = ExtResource("4_ulgj7")
+theme_override_styles/pressed = ExtResource("5_t18hh")
+theme_override_styles/hover = ExtResource("5_t18hh")
+theme_override_styles/focus = ExtResource("4_gh7ws")
+text = "CREDITOS"
+
+[node name="quit_btn" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=2124882738]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_ulgj7")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = ExtResource("4_ulgj7")
+theme_override_styles/pressed = ExtResource("5_t18hh")
+theme_override_styles/hover = ExtResource("5_t18hh")
+theme_override_styles/focus = ExtResource("4_gh7ws")
+text = "SAIR
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1919867826]
+
+[node name="soundtrack" type="AudioStreamPlayer" parent="." unique_id=1116103295]
+
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/new_btn" to="." method="OnButtonMouseEntered"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/new_btn" to="." method="OnNewBtnPressed"]
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/load_btn" to="." method="OnButtonMouseEntered"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/load_btn" to="." method="OnLoadBtnPressed"]
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/run_btn" to="." method="OnButtonMouseEntered"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/run_btn" to="." method="OnRunBtnPressed"]
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/rank_btn" to="." method="OnButtonMouseEntered"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/rank_btn" to="." method="OnRankBtnPressed"]
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/credits_btn" to="." method="OnButtonMouseEntered"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/credits_btn" to="." method="OnCreditsBtnPressed"]
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/quit_btn" to="." method="OnButtonMouseEntered"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/quit_btn" to="." method="OnQuitBtnPressed"]

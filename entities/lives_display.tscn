@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ba551g0cd7r24"]
+
+[ext_resource type="Script" uid="uid://djukuwb86akoe" path="res://scripts/LivesDisplay.cs" id="1_3cbtb"]
+[ext_resource type="Texture2D" uid="uid://dlm5wibsdtjrm" path="res://sprites/ThreeLives.png" id="2_m4kw1"]
+[ext_resource type="Texture2D" uid="uid://cutiuigum8guh" path="res://sprites/TwoLives.png" id="3_6ea67"]
+[ext_resource type="Texture2D" uid="uid://bousto6dffybe" path="res://sprites/OneLife.png" id="4_3hnxd"]
+[ext_resource type="Texture2D" uid="uid://dtm052qxk04yo" path="res://sprites/ZeroLives.png" id="5_13j0g"]
+
+[node name="LivesDisplay" type="CanvasLayer" unique_id=376770647 groups=["LivesDisplay"]]
+layer = 5
+script = ExtResource("1_3cbtb")
+ThreeLives = ExtResource("2_m4kw1")
+TwoLives = ExtResource("3_6ea67")
+OneLife = ExtResource("4_3hnxd")
+ZeroLives = ExtResource("5_13j0g")
+
+[node name="Control" type="Control" parent="." unique_id=748961965]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=358726629]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_bottom = 30.0
+grow_horizontal = 0
+mouse_filter = 2

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://4onap4ntuu06"]
+
+[ext_resource type="Texture2D" uid="uid://dy4cfrvucvogt" path="res://sprites/cano_de_saida_remake.png" id="1_41e5v"]
+[ext_resource type="Texture2D" uid="uid://cjg45h0thg8sq" path="res://sprites/cano_fundo.png" id="2_b2cjw"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xfgoy"]
+a = Vector2(22, -36)
+b = Vector2(101, -11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41e5v"]
+size = Vector2(88, 5)
+
+[node name="cano" type="Node2D" unique_id=1119179540]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1930746382]
+z_index = 10
+texture = ExtResource("1_41e5v")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1224022293]
+z_index = -5
+texture = ExtResource("2_b2cjw")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=341887420]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=483914702]
+position = Vector2(-60, 29)
+shape = SubResource("SegmentShape2D_xfgoy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1837851682]
+position = Vector2(-6, -24.5)
+shape = SubResource("RectangleShape2D_41e5v")

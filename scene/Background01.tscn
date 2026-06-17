@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://b0jwco6a4xyra"]
+
+[ext_resource type="Texture2D" uid="uid://bqino55xav2dl" path="res://sprites/favela_low.png" id="3_3yhnd"]
+[ext_resource type="Texture2D" uid="uid://7cns42yyb6d6" path="res://sprites/Nuvens.png" id="3_oa6pd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifame"]
+bg_color = Color(0.003921569, 0.5529412, 0.85882354, 1)
+
+[node name="Background01" type="Node2D" unique_id=223310989]
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=786718142]
+scroll_scale = Vector2(0.6, 0.6)
+scroll_offset = Vector2(-6, 13)
+repeat_size = Vector2(324, 0)
+repeat_times = 3
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D3" unique_id=978267152]
+z_index = 10
+offset_left = 5.0
+offset_top = 19.0
+offset_right = 257.0
+offset_bottom = 167.0
+scale = Vector2(1.288724, 1.2586331)
+texture = ExtResource("3_3yhnd")
+expand_mode = 1
+
+[node name="Parallax2D4" type="Parallax2D" parent="." unique_id=719629845]
+scroll_scale = Vector2(0.6, 0.6)
+scroll_offset = Vector2(-6, 13)
+repeat_size = Vector2(324, 0)
+repeat_times = 9
+
+[node name="Panel" type="Panel" parent="Parallax2D4" unique_id=1998385201]
+offset_left = -6.0
+offset_top = 452.0
+offset_right = 34.0
+offset_bottom = 492.0
+scale = Vector2(48.639767, -39.342598)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ifame")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=866815842]
+scale = Vector2(2.5, 2.5)
+scroll_offset = Vector2(-17.000008, -69.00001)
+repeat_size = Vector2(150, 0)
+autoscroll = Vector2(10, 0)
+repeat_times = 10
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=1576129943]
+offset_left = 7.600003
+offset_top = -10.399997
+offset_right = 135.6
+offset_bottom = 53.600002
+texture = ExtResource("3_oa6pd")
+
+[node name="TextureRect2" type="TextureRect" parent="Parallax2D" unique_id=1871422453]
+offset_left = 7.6000023
+offset_top = -65.99999
+offset_right = 135.6
+offset_bottom = -1.9999924
+texture = ExtResource("3_oa6pd")

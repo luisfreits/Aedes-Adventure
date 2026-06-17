@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c40tupb1jgtae"
+path="res://.godot/imported/positive feedback(yes).mp3-eb4e6cb2f6cd25c6d389d5e0027a6d9c.mp3str"
+
+[deps]
+
+source_file="res://aedes_sounds/aedes_sounds/positive feedback(yes).mp3"
+dest_files=["res://.godot/imported/positive feedback(yes).mp3-eb4e6cb2f6cd25c6d389d5e0027a6d9c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

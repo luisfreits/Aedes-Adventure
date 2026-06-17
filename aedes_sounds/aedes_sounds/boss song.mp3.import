@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dtl20ilpduki2"
+path="res://.godot/imported/boss song.mp3-4ffa6e466b745cf36c180680c895426b.mp3str"
+
+[deps]
+
+source_file="res://aedes_sounds/aedes_sounds/boss song.mp3"
+dest_files=["res://.godot/imported/boss song.mp3-4ffa6e466b745cf36c180680c895426b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

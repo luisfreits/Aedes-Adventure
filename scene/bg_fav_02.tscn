@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://c001f3rk0jsf7"]
+
+[ext_resource type="Texture2D" uid="uid://7cns42yyb6d6" path="res://sprites/Nuvens.png" id="1_pmevw"]
+[ext_resource type="Texture2D" uid="uid://7bl56jwvu5og" path="res://sprites/cenario_2.png" id="1_yr8bl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmevw"]
+bg_color = Color(0.003921569, 0.5529412, 0.85882354, 1)
+
+[node name="Background2" type="Node2D" unique_id=1061726641]
+z_index = -10
+
+[node name="CEU" type="Parallax2D" parent="." unique_id=578520849]
+repeat_size = Vector2(400, 0)
+autoscroll = Vector2(5, 0)
+repeat_times = 3
+
+[node name="Panel" type="Panel" parent="CEU" unique_id=105017724]
+offset_left = -528.0
+offset_top = -988.0
+offset_right = 846.0
+offset_bottom = 229.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pmevw")
+
+[node name="TextureRect" type="TextureRect" parent="CEU" unique_id=794166133]
+offset_left = -53.0
+offset_top = -146.0
+offset_right = 75.0
+offset_bottom = -82.0
+scale = Vector2(2.4336877, 2.5050888)
+texture = ExtResource("1_pmevw")
+
+[node name="TextureRect2" type="TextureRect" parent="CEU" unique_id=1399553107]
+offset_left = -198.00003
+offset_top = -476.0
+offset_right = -70.00003
+offset_bottom = -412.0
+scale = Vector2(3.7970219, 5.7551875)
+texture = ExtResource("1_pmevw")
+
+[node name="FAV" type="Parallax2D" parent="." unique_id=597741636]
+repeat_size = Vector2(252, 0)
+repeat_times = 5
+
+[node name="TextureRect" type="TextureRect" parent="FAV" unique_id=1310120373]
+offset_right = 252.0
+offset_bottom = 148.0
+texture = ExtResource("1_yr8bl")
+expand_mode = 1

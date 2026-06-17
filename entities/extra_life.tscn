@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cq42ycsps3spv"]
+
+[ext_resource type="Texture2D" uid="uid://dg8x48jlblych" path="res://sprites/extra_life.png" id="2_2shlk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v5cw8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pf7m"]
+atlas = ExtResource("2_2shlk")
+region = Rect2(0, 0, 512, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if6ok"]
+atlas = ExtResource("2_2shlk")
+region = Rect2(512, 0, 512, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkvub"]
+atlas = ExtResource("2_2shlk")
+region = Rect2(1024, 0, 512, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6w3v"]
+atlas = ExtResource("2_2shlk")
+region = Rect2(512, 0, 512, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fx4ie"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pf7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if6ok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkvub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6w3v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="ExtraLife" type="Area2D" unique_id=1328768037]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=278967703]
+scale = Vector2(0.47273412, 0.47723076)
+shape = SubResource("CircleShape2D_v5cw8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=225408755]
+scale = Vector2(0.020457968, 0.020176768)
+sprite_frames = SubResource("SpriteFrames_fx4ie")
+frame_progress = 0.9292563

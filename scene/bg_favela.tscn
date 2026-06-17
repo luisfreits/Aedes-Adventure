@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cr60ofg1ggs6w"]
+
+[ext_resource type="Texture2D" uid="uid://bopnn5yspwufb" path="res://sprites/cenario_3_remake.png" id="1_2fey0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iar40"]
+bg_color = Color(0.5019608, 0.4627451, 0.4117647, 1)
+
+[node name="ScrollingScene" type="Node2D" unique_id=365426600]
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=217020715]
+scroll_scale = Vector2(0.6, 0.6)
+scroll_offset = Vector2(-6, 13)
+repeat_size = Vector2(252, 0)
+repeat_times = 19
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D3" unique_id=2126226936]
+z_index = 10
+offset_left = 5.0
+offset_top = 19.0
+offset_right = 257.0
+offset_bottom = 167.0
+texture = ExtResource("1_2fey0")
+expand_mode = 1
+
+[node name="Parallax2D4" type="Parallax2D" parent="." unique_id=1456823589]
+scroll_scale = Vector2(0.6, 0.6)
+scroll_offset = Vector2(-6, 13)
+repeat_size = Vector2(324, 0)
+repeat_times = 18
+
+[node name="Panel" type="Panel" parent="Parallax2D4" unique_id=1842221511]
+offset_left = -108.0
+offset_top = -1971.0
+offset_right = 228.0
+offset_bottom = -1014.0
+scale = Vector2(1.7028437, 4.6812906)
+theme_override_styles/panel = SubResource("StyleBoxFlat_iar40")

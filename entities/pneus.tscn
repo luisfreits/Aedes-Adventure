@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cgcv3ryvqll71"]
+
+[ext_resource type="Texture2D" uid="uid://dg4ey01mgbsjs" path="res://sprites/pneu.png" id="1_1nmvj"]
+[ext_resource type="Script" uid="uid://dq4l6ugn61j32" path="res://scripts/Spawn.cs" id="1_cmlie"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmlie"]
+size = Vector2(141, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x0tb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_030rc"]
+
+[node name="Pneus" type="Area2D" unique_id=1664617894 groups=["Need"]]
+collision_mask = 3
+script = ExtResource("1_cmlie")
+
+[node name="SpawnShape" type="CollisionShape2D" parent="." unique_id=1809788663]
+position = Vector2(0.5, -4.5)
+shape = SubResource("RectangleShape2D_cmlie")
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=1738451336]
+scale = Vector2(2.6386015, 2.5018864)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=375929071]
+shape = SubResource("RectangleShape2D_0x0tb")
+
+[node name="SpawnArea" type="Node2D" parent="." unique_id=657378219]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpawnArea" unique_id=1367891895]
+scale = Vector2(0.059987135, 0.05376271)
+texture = ExtResource("1_1nmvj")
+
+[node name="Timer" type="Timer" parent="." unique_id=468094545]
+
+[node name="PlayerAround" type="Area2D" parent="." unique_id=1985449691]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAround" unique_id=992450439]
+position = Vector2(1, -50.999996)
+scale = Vector2(11.959011, 7.0032268)
+shape = SubResource("RectangleShape2D_030rc")

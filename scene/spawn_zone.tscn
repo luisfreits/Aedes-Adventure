@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bqc0ohggcb5gy"]
+
+[ext_resource type="Script" uid="uid://dq4l6ugn61j32" path="res://scripts/Spawn.cs" id="1_nvout"]
+[ext_resource type="Texture2D" uid="uid://dxf72womqgmcw" path="res://sprites/poça.png" id="3_gjsqd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eweq7"]
+size = Vector2(71, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3eay"]
+size = Vector2(36.375, 134)
+
+[node name="SpawnZone" type="Area2D" unique_id=625942267 groups=["Need"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_nvout")
+
+[node name="Timer" type="Timer" parent="." unique_id=1481382860]
+
+[node name="SpawnArea" type="Node2D" parent="." unique_id=352345051]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpawnArea" unique_id=895757020]
+texture = ExtResource("3_gjsqd")
+
+[node name="SpawnShape" type="CollisionShape2D" parent="." unique_id=907305024]
+position = Vector2(-9, 14.125)
+shape = SubResource("RectangleShape2D_eweq7")
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=807983195]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=5218605]
+position = Vector2(-10.5, 12)
+shape = SubResource("RectangleShape2D_r3eay")
+debug_color = Color(0.86048067, 0.24912465, 0.6623652, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

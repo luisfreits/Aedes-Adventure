@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://bemljwfkfr2kx"]
+
+[ext_resource type="Script" uid="uid://3g64g5snemyw" path="res://scripts/RunSetup.cs" id="1_geqf7"]
+[ext_resource type="Texture2D" uid="uid://bopnn5yspwufb" path="res://sprites/cenario_3_remake.png" id="2_wh55h"]
+[ext_resource type="FontFile" uid="uid://wb6btfnn8cdp" path="res://sprites/PressStart2P-Regular.ttf" id="3_yppmp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq803"]
+bg_color = Color(0, 0, 0, 0.7764706)
+
+[node name="RunSetup" type="Control" unique_id=779109344]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_geqf7")
+
+[node name="bg" type="TextureRect" parent="." unique_id=1612503596]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wh55h")
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=530142136]
+z_index = 1
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -35.0
+offset_right = 34.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1282114944]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_yppmp")
+theme_override_font_sizes/font_size = 20
+text = "DIGITE SEU NOME"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer" unique_id=1056475973]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_yppmp")
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=294930069]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_yppmp")
+text = "INICIAR RUN
+"
+
+[node name="Panel" type="Panel" parent="." unique_id=595921383]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jq803")
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="OnStartButtonPressed"]

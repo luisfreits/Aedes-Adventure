@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3t7ufghoyohu"
+path="res://.godot/imported/cenario 1.mp3-d8f392d41daccf96d621828a5ebc0ddd.mp3str"
+
+[deps]
+
+source_file="res://aedes_sounds/aedes_sounds/cenario 1.mp3"
+dest_files=["res://.godot/imported/cenario 1.mp3-d8f392d41daccf96d621828a5ebc0ddd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
