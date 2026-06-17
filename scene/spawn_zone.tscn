@@ -7,7 +7,7 @@
 size = Vector2(71, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3eay"]
-size = Vector2(36.375, 134)
+size = Vector2(73.266335, 149.97095)
 
 [node name="SpawnZone" type="Area2D" unique_id=625942267 groups=["Need"]]
 collision_layer = 0
@@ -22,13 +22,16 @@ script = ExtResource("1_nvout")
 texture = ExtResource("3_gjsqd")
 
 [node name="SpawnShape" type="CollisionShape2D" parent="." unique_id=907305024]
-position = Vector2(-9, 14.125)
+position = Vector2(-3.0000005, -380)
+scale = Vector2(31.8105, 35.34808)
 shape = SubResource("RectangleShape2D_eweq7")
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=807983195]
+scale = Vector2(4.68155, 1.6269817)
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=5218605]
-position = Vector2(-10.5, 12)
+position = Vector2(-0.74761575, 6.760987)
 shape = SubResource("RectangleShape2D_r3eay")
 debug_color = Color(0.86048067, 0.24912465, 0.6623652, 0.41960785)
 

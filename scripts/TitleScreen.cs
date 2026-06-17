@@ -6,7 +6,7 @@ public partial class TitleScreen : Control
     private Button _rankBtn;
     private const string SavePath = "user://savegame.save";
 
-    //nos de audio
+    // nós de áudio
     private AudioStreamPlayer _soundtrack;
     private AudioStreamPlayer _audio;
 
@@ -26,7 +26,17 @@ public partial class TitleScreen : Control
         GetNode("/root/Hud").Call("EsconderHud");
         GetNode("/root/LivesDisplay").Call("EsconderLivesDisplay");
 
-        _soundtrack.Stream = GD.Load<AudioStream>("res://audio_assets/tela_inicial.mp3");
+        // 1. Carrega o arquivo da tela inicial
+        AudioStream musicaMenu = GD.Load<AudioStream>("res://audio_assets/tela_inicial.mp3");
+
+        // 2. Ativa o loop contínuo para o menu principal
+        if (musicaMenu is AudioStreamMP3 mp3Musica)
+        {
+            mp3Musica.Loop = true;
+        }
+
+        // 3. Atribui e toca
+        _soundtrack.Stream = musicaMenu;
         _soundtrack.Play();
     }
 
@@ -41,22 +51,22 @@ public partial class TitleScreen : Control
         GetNode("/root/LivesDisplay").Call("MostrarLivesDisplay");
         GetTree().ChangeSceneToFile("res://scene/Fase-1-0.tscn");
     }
+
     private void OnLoadBtnPressed()
     {
-        //verifica se o arquivo existe
+        // verifica se o arquivo existe
         if (!FileAccess.FileExists(SavePath))
         {
-            return; //se nao tiver save nao roda
+            return; // se não tiver save não roda
         }
 
-        //open abre o arquivo pra ler
-        //modeflags.read equivale ao read do gdscript
+        // open abre o arquivo pra ler
         var file = FileAccess.Open(SavePath, FileAccess.ModeFlags.Read);
 
-        //GetLine le uma linha do arquivo
+        // GetLine lê uma linha do arquivo
         string scenePath = file.GetLine();
 
-        //fecha arquivo apos ler
+        // fecha arquivo após ler
         file.Close();
 
         GetTree().ChangeSceneToFile(scenePath);
@@ -84,7 +94,7 @@ public partial class TitleScreen : Control
 
     private void OnQuitBtnPressed()
     {
-        // Quit encerra o jogo equivale ao get_tree().quit()
+        // Quit encerra o jogo
         GetTree().Quit();
     }
 

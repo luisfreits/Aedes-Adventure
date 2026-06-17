@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bo8bave6oh2d3" path="res://entities/player.tscn" id="3_kl66y"]
 [ext_resource type="PackedScene" uid="uid://1i52xwtxj5y6" path="res://entities/camera_2d.tscn" id="5_75lu7"]
 [ext_resource type="Resource" uid="uid://8xktipkbd2n5" path="res://timelines/timeline-tutorial.dtl" id="9_aa36b"]
+[ext_resource type="Texture2D" uid="uid://cpv0hmveyomgk" path="res://sprites/E-Key.png" id="10_6tkd3"]
 [ext_resource type="PackedScene" uid="uid://cyjges3djtow3" path="res://entities/level_end.tscn" id="12_fnlr8"]
 [ext_resource type="PackedScene" uid="uid://dlknkawow3q5b" path="res://entities/placa.tscn" id="13_vq6t3"]
 [ext_resource type="Resource" uid="uid://dvc2pdotnv5s4" path="res://timelines/placa_pulo.dtl" id="14_d1mw1"]
@@ -13,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://boo1ejgww7feh" path="res://entities/lixeira.tscn" id="19_3y512"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_74nde"]
-load_path = "res://.godot/imported/Subway_tiles.png-e259b4a9e2cc9b15fede3f4c128bd29e.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uietq"]
 texture = SubResource("CompressedTexture2D_74nde")
@@ -461,6 +461,28 @@ sources/1 = SubResource("TileSetAtlasSource_uietq")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvp2h"]
 size = Vector2(20, 260)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmfck"]
+atlas = ExtResource("10_6tkd3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ire81"]
+atlas = ExtResource("10_6tkd3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d58dh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmfck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ire81")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
 [node name="Fase-1-1" type="Node2D" unique_id=522247827]
 script = ExtResource("1_2bsn8")
 metadata/_edit_vertical_guides_ = [1015.0, 1744.0, 1769.0, 836.0, 836.0, 673.0, 671.0, 479.0, -17.0, 578.0, 463.0]
@@ -509,6 +531,13 @@ Timeline = ExtResource("14_d1mw1")
 [node name="Kid" parent="." unique_id=255573569 instance=ExtResource("15_6bjnu")]
 position = Vector2(330, 138)
 Timeline = ExtResource("9_aa36b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Kid" unique_id=1009822356]
+position = Vector2(0, -14.999999)
+scale = Vector2(0.24810272, 0.27433383)
+sprite_frames = SubResource("SpriteFrames_d58dh")
+autoplay = "default"
+frame_progress = 0.24279237
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1417782479]
 

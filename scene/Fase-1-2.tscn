@@ -1,17 +1,15 @@
 [gd_scene format=4 uid="uid://2dv7ba8hmpq4"]
 
-[ext_resource type="Script" uid="uid://bvt48fw6ykpro" path="res://scripts/Cenario01.cs" id="1_llarq"]
+[ext_resource type="Script" uid="uid://c0g6b5mokxw5w" path="res://scripts/Cenario02.cs" id="1_dd3wy"]
 [ext_resource type="PackedScene" uid="uid://bo8bave6oh2d3" path="res://entities/player.tscn" id="1_mt7wg"]
 [ext_resource type="PackedScene" uid="uid://1i52xwtxj5y6" path="res://entities/camera_2d.tscn" id="4_llarq"]
 [ext_resource type="PackedScene" uid="uid://8wbm8c2yvkbm" path="res://scene/terrain.tscn" id="5_bbgib"]
 [ext_resource type="PackedScene" uid="uid://nvlq1wc8ltp" path="res://entities/moving_platform.tscn" id="5_hr4qx"]
 [ext_resource type="Script" uid="uid://bwmtyucq4ld42" path="res://scripts/KillZone.cs" id="7_dd3wy"]
 [ext_resource type="PackedScene" uid="uid://cyjges3djtow3" path="res://entities/level_end.tscn" id="7_pdyys"]
-[ext_resource type="Script" uid="uid://dq4l6ugn61j32" path="res://scripts/Spawn.cs" id="8_bbgib"]
 [ext_resource type="PackedScene" uid="uid://cg4kbbd4r6kl5" path="res://entities/albo.tscn" id="9_bbgib"]
 [ext_resource type="PackedScene" uid="uid://x4n31ot4pshc" path="res://entities/damage_tile.tscn" id="9_y42bg"]
 [ext_resource type="PackedScene" uid="uid://dlknkawow3q5b" path="res://entities/placa.tscn" id="11_bbgib"]
-[ext_resource type="Texture2D" uid="uid://dxf72womqgmcw" path="res://sprites/poça.png" id="12_dd3wy"]
 [ext_resource type="PackedScene" uid="uid://7k8ttqjpk201" path="res://entities/unstable_tiles.tscn" id="13_llarq"]
 [ext_resource type="Resource" uid="uid://uyr6s1nc0rq7" path="res://timelines/placa_nuvem.dtl" id="13_pdyys"]
 [ext_resource type="PackedScene" uid="uid://c001f3rk0jsf7" path="res://scene/bg_fav_02.tscn" id="15_kfenu"]
@@ -19,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://t2asgqm81lmj" path="res://entities/kid.tscn" id="17_dd3wy"]
 [ext_resource type="PackedScene" uid="uid://cgcv3ryvqll71" path="res://entities/pneus.tscn" id="18_dd3wy"]
 [ext_resource type="Resource" uid="uid://bqcxa1asynogp" path="res://timelines/timeline-0102.dtl" id="18_y42bg"]
+[ext_resource type="PackedScene" uid="uid://de8uha7ttt6y4" path="res://entities/poca.tscn" id="19_y42bg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uietq"]
 1:0/0 = 0
@@ -468,21 +467,12 @@ size = Vector2(26.5, 623)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnyf2"]
 size = Vector2(26, 399)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4diuk"]
-size = Vector2(462, 178)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eweq7"]
-size = Vector2(71, 29)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3eay"]
-size = Vector2(36.375, 134)
-
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_llarq"]
 a = Vector2(-37.7769, 33.925)
 b = Vector2(570.525, 36.4229)
 
 [node name="Fase-1-2" type="Node2D" unique_id=1771074601]
-script = ExtResource("1_llarq")
+script = ExtResource("1_dd3wy")
 metadata/_edit_vertical_guides_ = [1015.0, 1744.0, 1769.0, -86.0, -229.0, 378.0, 762.0, 762.0, 365.0, 371.0, 762.0, 511.0, 26.0, 353.0, 353.0, 725.0, 368.0, 820.0, 363.0, 745.0, 344.0, 516.0, -31.0, 711.0, 989.0, 626.0, 751.0, 66.0, 29.0]
 metadata/_edit_horizontal_guides_ = [387.0, 386.0, -3.0, 157.0, 202.0, -5.0, -3.0, 10.0, 202.0, 1.0, -23.0, -23.0, -21.0, 253.0, -18.0, 240.0, -22.0, 221.0, -25.0, 176.0, 234.0, -406.0, 376.0, 54.0, 140.0, 231.0, 267.0]
 
@@ -579,44 +569,6 @@ NextLevel = "Fase-1-3"
 position = Vector2(1064, -35)
 shape = SubResource("RectangleShape2D_lnyf2")
 
-[node name="Spawn" type="Area2D" parent="." unique_id=625942267]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("8_bbgib")
-MosquitoScene = ExtResource("9_bbgib")
-MaxMosquitos = 2
-HasAnimation = true
-AnimationName = "tampar"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawn" unique_id=2043500849]
-position = Vector2(327, 273)
-shape = SubResource("RectangleShape2D_4diuk")
-
-[node name="Timer" type="Timer" parent="Spawn" unique_id=1481382860]
-wait_time = 4.5
-
-[node name="SpawnArea" type="Node2D" parent="Spawn" unique_id=352345051]
-z_index = 1
-position = Vector2(254, 147)
-scale = Vector2(-2.1062448, 1.8034406)
-
-[node name="Sprite2D" type="Sprite2D" parent="Spawn/SpawnArea" unique_id=895757020]
-position = Vector2(10.445129, 112.56262)
-scale = Vector2(0.08265828, 0.063600056)
-texture = ExtResource("12_dd3wy")
-
-[node name="SpawnShape" type="CollisionShape2D" parent="Spawn" unique_id=907305024]
-position = Vector2(235.5, 338.5)
-shape = SubResource("RectangleShape2D_eweq7")
-
-[node name="InteractArea" type="Area2D" parent="Spawn" unique_id=807983195]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawn/InteractArea" unique_id=5218605]
-position = Vector2(233.8125, 385)
-shape = SubResource("RectangleShape2D_r3eay")
-
 [node name="KillZone" type="Area2D" parent="." unique_id=1479959090 groups=["LethalArea"]]
 collision_layer = 16
 collision_mask = 2
@@ -670,10 +622,11 @@ scale = Vector2(0.8217645, 0.7480182)
 position = Vector2(418, 297)
 Timeline = ExtResource("18_y42bg")
 
-[connection signal="body_entered" from="Spawn" to="Spawn" method="OnBodyEntered"]
-[connection signal="body_exited" from="Spawn" to="Spawn" method="OnBodyExited"]
-[connection signal="timeout" from="Spawn/Timer" to="Spawn" method="OnTimerTimeout"]
-[connection signal="body_entered" from="Spawn/InteractArea" to="Spawn" method="OnInteractEntered"]
-[connection signal="body_exited" from="Spawn/InteractArea" to="." method="OnInteractExited"]
+[node name="Poca" parent="." unique_id=2031515754 instance=ExtResource("19_y42bg")]
+z_index = 1
+position = Vector2(240.00002, 357)
+scale = Vector2(1.9532169, 1.3508121)
+MosquitoScene = ExtResource("9_bbgib")
+SpawnDelay = 2.5
 
 [editable path="LevelEnd"]

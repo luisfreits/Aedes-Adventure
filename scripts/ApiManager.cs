@@ -9,14 +9,6 @@ public partial class ApiManager : Node
 
     private static readonly System.Net.Http.HttpClient Http = new System.Net.Http.HttpClient();
 
-    public override async void _Ready()
-    {
-        // TESTE AUTOMÁTICO: Assim que o jogo abre, envia um tempo de teste
-        GD.Print("=== Iniciando Teste da API Vercel ===");
-        await SaveRun("Psyduck_Vercel", 15.89f);
-        GD.Print("=== Teste finalizado ===");
-    }
-
     public async Task SaveRun(string playerName, float time)
     {
         // InvariantCulture: Garante que o float use ponto e nunca vírgula

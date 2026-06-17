@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cq42ycsps3spv"]
 
+[ext_resource type="Script" uid="uid://cpbnlqej3omc8" path="res://scripts/ExtraLife.cs" id="1_m6w3v"]
 [ext_resource type="Texture2D" uid="uid://dg8x48jlblych" path="res://sprites/extra_life.png" id="2_2shlk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v5cw8"]
@@ -43,6 +44,7 @@ animations = [{
 [node name="ExtraLife" type="Area2D" unique_id=1328768037]
 collision_layer = 0
 collision_mask = 2
+script = ExtResource("1_m6w3v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=278967703]
 scale = Vector2(0.47273412, 0.47723076)

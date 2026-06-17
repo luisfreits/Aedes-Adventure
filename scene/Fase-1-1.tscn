@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://d31fpsapfq2pl" path="res://timelines/placa_instavel.dtl" id="14_b6606"]
 [ext_resource type="PackedScene" uid="uid://t2asgqm81lmj" path="res://entities/kid.tscn" id="15_74nde"]
 [ext_resource type="PackedScene" uid="uid://dlknkawow3q5b" path="res://entities/placa.tscn" id="15_307il"]
+[ext_resource type="Texture2D" uid="uid://cpv0hmveyomgk" path="res://sprites/E-Key.png" id="15_bbhtg"]
 [ext_resource type="Resource" uid="uid://dvc2pdotnv5s4" path="res://timelines/placa_pulo.dtl" id="16_74nde"]
 [ext_resource type="Resource" uid="uid://w0xws3jw4g1g" path="res://timelines/timeline-0101.dtl" id="16_hk8km"]
 [ext_resource type="PackedScene" uid="uid://4onap4ntuu06" path="res://scene/cano.tscn" id="18_yk2fw"]
@@ -22,7 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://boo1ejgww7feh" path="res://entities/lixeira.tscn" id="19_b6606"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_74nde"]
-load_path = "res://.godot/imported/Subway_tiles.png-e259b4a9e2cc9b15fede3f4c128bd29e.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uietq"]
 texture = SubResource("CompressedTexture2D_74nde")
@@ -501,6 +501,28 @@ size = Vector2(25, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xsrxy"]
 size = Vector2(953, 29)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2mla"]
+atlas = ExtResource("15_bbhtg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7j8t"]
+atlas = ExtResource("15_bbhtg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_th7qa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2mla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7j8t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
 [node name="Fase-1-1" type="Node2D" unique_id=522247827]
 script = ExtResource("1_yk2fw")
 metadata/_edit_vertical_guides_ = [1015.0, 1744.0, 1769.0, 836.0, 836.0, 673.0, 671.0, 479.0, -17.0, 578.0, 463.0]
@@ -605,6 +627,13 @@ Timeline = ExtResource("14_b6606")
 [node name="PlacaJump" parent="." unique_id=1712264415 instance=ExtResource("15_307il")]
 position = Vector2(356, 168)
 Timeline = ExtResource("16_74nde")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlacaJump" unique_id=36424072]
+position = Vector2(0.99999833, -7.999998)
+scale = Vector2(0.24758431, 0.27722713)
+sprite_frames = SubResource("SpriteFrames_th7qa")
+autoplay = "default"
+frame_progress = 0.7257814
 
 [node name="Kid" parent="." unique_id=255573569 instance=ExtResource("15_74nde")]
 position = Vector2(118, 137)

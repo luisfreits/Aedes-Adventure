@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://de8uha7ttt6y4"]
+
+[ext_resource type="Script" uid="uid://dq4l6ugn61j32" path="res://scripts/Spawn.cs" id="1_pus18"]
+[ext_resource type="Texture2D" uid="uid://dxf72womqgmcw" path="res://sprites/poça.png" id="2_pus18"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0prus"]
+size = Vector2(2, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucmkr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wp7q"]
+
+[node name="Lixeira" type="Area2D" unique_id=2031515754 groups=["Need"]]
+collision_mask = 2
+script = ExtResource("1_pus18")
+MaxMosquitos = 2
+HasAnimation = true
+AnimationName = "tampar"
+
+[node name="SpawnShape" type="CollisionShape2D" parent="." unique_id=945829315]
+shape = SubResource("RectangleShape2D_0prus")
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=247751155]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=680655392]
+shape = SubResource("RectangleShape2D_ucmkr")
+
+[node name="SpawnArea" type="Node2D" parent="." unique_id=1332912347]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpawnArea" unique_id=1430825401]
+position = Vector2(0, -4)
+scale = Vector2(0.07801515, 0.08601331)
+texture = ExtResource("2_pus18")
+
+[node name="Timer" type="Timer" parent="." unique_id=1988694065]
+
+[node name="PlayerAround" type="Area2D" parent="." unique_id=1428962243]
+position = Vector2(-1, -40)
+scale = Vector2(9.444082, 5.069668)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAround" unique_id=1936439806]
+scale = Vector2(1.0090289, 1.254902)
+shape = SubResource("RectangleShape2D_4wp7q")
+
+[connection signal="body_entered" from="InteractArea" to="." method="OnInteractEntered"]
+[connection signal="body_exited" from="InteractArea" to="." method="OnInteractExited"]
+[connection signal="body_entered" from="PlayerAround" to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="PlayerAround" to="." method="OnBodyExited"]

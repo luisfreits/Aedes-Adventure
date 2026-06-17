@@ -38,5 +38,5 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAround" unique_id=992450439]
 position = Vector2(1, -50.999996)
-scale = Vector2(11.959011, 7.0032268)
+scale = Vector2(30.112007, -9.890519)
 shape = SubResource("RectangleShape2D_030rc")

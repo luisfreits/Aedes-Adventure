@@ -16,7 +16,6 @@ public partial class Hud : CanvasLayer
     // int hitCount  quantidade de hits recebidos até agora
     public void UpdateHearts(int hitCount)
     {
-        // switch  equivale ao match do GDScript
         // compara hitCount com cada case e executa o correspondente
         switch (hitCount)
         {

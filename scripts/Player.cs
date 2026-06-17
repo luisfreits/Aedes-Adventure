@@ -124,6 +124,13 @@ public partial class Player : CharacterBody2D
             GoToHurtState();
     }
 
+    public void ZeroHit()
+    {
+        _hitCount = 0;
+        // Diz ao HUD para atualizar o display mostrando 3 corações novamente (case 0)
+        _hud.UpdateHearts(_hitCount);
+    }
+
     // a função precisa ser "async void" para poder usar await
     private async void GoToHurtState()
     {
@@ -297,6 +304,10 @@ public partial class Player : CharacterBody2D
         _attackCollision.Disabled = false;
         _anim.Play("attack");
 
+        // Carrega e reproduz o som de ataque uma única vez ao entrar no estado
+        _attackSound.Stream = GD.Load<AudioStream>("res://audio_assets/attack.mp3");
+        _attackSound.Play();
+
         float fps = (float)_anim.SpriteFrames.GetAnimationSpeed("attack");
         int frameCount = _anim.SpriteFrames.GetFrameCount("attack");
         float duration = frameCount / fps;
@@ -375,7 +386,9 @@ public partial class Player : CharacterBody2D
         _sprite.Modulate = spriteModulate;
 
         _anim.Play("dead");
-        _deathSound.Stream = GD.Load<AudioStream>("res://audio_assets/jump.mp3");
+        
+        // Carrega e reproduz o som correto de morte
+        _deathSound.Stream = GD.Load<AudioStream>("res://audio_assets/death.mp3");
         _deathSound.Play();
 
         await ToSignal(_anim, AnimationPlayer.SignalName.AnimationFinished);
@@ -460,16 +473,13 @@ public partial class Player : CharacterBody2D
     {
         Move(delta);
         if (Input.IsActionJustPressed("jump") && CanJump()) GoToJumpState();
-
-        _attackSound.Stream = GD.Load<AudioStream>("res://audio_assets/attack_sound.mp3");
-        _attackSound.Play();
     }
 
     private void DeadState(float delta) { }   // pass, corpo vazio
 
     private bool CanJump() => _jumpCount < _maxJumpCount;
 
-    //  REVISAR
+    //   REVISAR
     private Node GetEnemyFromCollider(Node collider)
     {
         if (collider.IsInGroup("Enemies")) return collider;
