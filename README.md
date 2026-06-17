@@ -35,6 +35,7 @@ O projeto une mecânicas de jogos de plataforma e ação com elementos pedagógi
 | Mover para a Direita | **D** | Movimenta o personagem para a direita. |
 | Pular | **Espaço** | Executa o pulo básico e o pulo duplo (máximo de 2). |
 | Atacar | **Q** | Realiza o ataque normal de curto alcance. |
+| Atacar | **p** | Realiza a defesa perfeita e reflete o projétil. |
 
 ---
 
